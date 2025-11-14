@@ -8,5 +8,8 @@ namespace Büromaterialbestellungen.Classes.Container
 {
     internal class CclContUser
     {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
     }
 }

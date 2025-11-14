@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonBestellt = new System.Windows.Forms.Button();
-            this.buttonVorbestellt = new System.Windows.Forms.Button();
-            this.buttonErhalten = new System.Windows.Forms.Button();
             this.ucOverviewErhalten = new Büromaterialbestellungen.GUI.UCOverview();
             this.ucOverviewVorbestellt = new Büromaterialbestellungen.GUI.UCOverview();
             this.ucOverviewBestellt = new Büromaterialbestellungen.GUI.UCOverview();
             this.buttonMenu = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.labelBestellt = new System.Windows.Forms.Label();
+            this.labelVorbestellt = new System.Windows.Forms.Label();
+            this.labelErhalten = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -45,36 +45,6 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 23);
             this.label1.TabIndex = 2;
-            // 
-            // buttonBestellt
-            // 
-            this.buttonBestellt.Location = new System.Drawing.Point(25, 26);
-            this.buttonBestellt.Name = "buttonBestellt";
-            this.buttonBestellt.Size = new System.Drawing.Size(351, 177);
-            this.buttonBestellt.TabIndex = 1;
-            this.buttonBestellt.Text = "Bestellt";
-            this.buttonBestellt.UseVisualStyleBackColor = true;
-            this.buttonBestellt.Click += new System.EventHandler(this.buttonBestellt_Click);
-            // 
-            // buttonVorbestellt
-            // 
-            this.buttonVorbestellt.Location = new System.Drawing.Point(428, 26);
-            this.buttonVorbestellt.Name = "buttonVorbestellt";
-            this.buttonVorbestellt.Size = new System.Drawing.Size(415, 177);
-            this.buttonVorbestellt.TabIndex = 3;
-            this.buttonVorbestellt.Text = "Vorbestellt";
-            this.buttonVorbestellt.UseVisualStyleBackColor = true;
-            this.buttonVorbestellt.Click += new System.EventHandler(this.buttonVorbestellt_Click);
-            // 
-            // buttonErhalten
-            // 
-            this.buttonErhalten.Location = new System.Drawing.Point(893, 26);
-            this.buttonErhalten.Name = "buttonErhalten";
-            this.buttonErhalten.Size = new System.Drawing.Size(379, 177);
-            this.buttonErhalten.TabIndex = 4;
-            this.buttonErhalten.Text = "Erhalten";
-            this.buttonErhalten.UseVisualStyleBackColor = true;
-            this.buttonErhalten.Click += new System.EventHandler(this.buttonErhalten_Click);
             // 
             // ucOverviewErhalten
             // 
@@ -105,7 +75,6 @@
             this.buttonMenu.TabIndex = 8;
             this.buttonMenu.Text = "Menü";
             this.buttonMenu.UseVisualStyleBackColor = true;
-            this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
             // 
             // button1
             // 
@@ -116,36 +85,64 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // labelBestellt
+            // 
+            this.labelBestellt.AutoSize = true;
+            this.labelBestellt.Location = new System.Drawing.Point(34, 85);
+            this.labelBestellt.Name = "labelBestellt";
+            this.labelBestellt.Size = new System.Drawing.Size(83, 25);
+            this.labelBestellt.TabIndex = 10;
+            this.labelBestellt.Text = "Bestellt";
+            // 
+            // labelVorbestellt
+            // 
+            this.labelVorbestellt.AutoSize = true;
+            this.labelVorbestellt.Location = new System.Drawing.Point(441, 85);
+            this.labelVorbestellt.Name = "labelVorbestellt";
+            this.labelVorbestellt.Size = new System.Drawing.Size(114, 25);
+            this.labelVorbestellt.TabIndex = 11;
+            this.labelVorbestellt.Text = "Vorbestellt";
+            // 
+            // labelErhalten
+            // 
+            this.labelErhalten.AutoSize = true;
+            this.labelErhalten.Location = new System.Drawing.Point(905, 85);
+            this.labelErhalten.Name = "labelErhalten";
+            this.labelErhalten.Size = new System.Drawing.Size(92, 25);
+            this.labelErhalten.TabIndex = 12;
+            this.labelErhalten.Text = "Erhalten";
+            // 
             // FormDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1337, 806);
+            this.Controls.Add(this.labelErhalten);
+            this.Controls.Add(this.labelVorbestellt);
+            this.Controls.Add(this.labelBestellt);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonMenu);
             this.Controls.Add(this.ucOverviewErhalten);
             this.Controls.Add(this.ucOverviewVorbestellt);
             this.Controls.Add(this.ucOverviewBestellt);
-            this.Controls.Add(this.buttonErhalten);
-            this.Controls.Add(this.buttonVorbestellt);
-            this.Controls.Add(this.buttonBestellt);
             this.Controls.Add(this.label1);
             this.Name = "FormDashboard";
             this.Text = "FormDashboard";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button buttonBestellt;
-        private System.Windows.Forms.Button buttonVorbestellt;
-        private System.Windows.Forms.Button buttonErhalten;
         private UCOverview ucOverviewBestellt;
         private UCOverview ucOverviewVorbestellt;
         private UCOverview ucOverviewErhalten;
         private System.Windows.Forms.Button buttonMenu;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelBestellt;
+        private System.Windows.Forms.Label labelVorbestellt;
+        private System.Windows.Forms.Label labelErhalten;
     }
 }

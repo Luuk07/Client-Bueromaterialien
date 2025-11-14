@@ -8,5 +8,8 @@ namespace Büromaterialbestellungen.Classes.Container
 {
     internal class CclContShoppingCart
     {
+        public List<string> ListOfProducts { get; set; }
+
+        public CclContUser user { get; set; }
     }
 }

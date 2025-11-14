@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="CDSCore">
+      <HintPath>..\..\..\_bin\CDSCore.dll</HintPath>
+    </Reference>
+    <Reference Include="DataRecords">
+      <HintPath>..\..\..\_bin\DataRecords.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if $(ConfigurationName) == Release copy /Y &quot;$(TargetPath)&quot; &quot;$(TargetDir)\..\..\..\..\..\..\_bin\&quot;" />
+  </Target>
+
+</Project>

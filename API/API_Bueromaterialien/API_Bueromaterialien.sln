@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API_Bueromaterialien", "API_Bueromaterialien\API_Bueromaterialien.csproj", "{C8EB48C5-CD91-4E1C-BC18-F5A0BA26D03B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8EB48C5-CD91-4E1C-BC18-F5A0BA26D03B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8EB48C5-CD91-4E1C-BC18-F5A0BA26D03B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8EB48C5-CD91-4E1C-BC18-F5A0BA26D03B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8EB48C5-CD91-4E1C-BC18-F5A0BA26D03B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EB39EDAA-0107-4899-98B5-8DC02ABA2E74}
+	EndGlobalSection
+EndGlobal

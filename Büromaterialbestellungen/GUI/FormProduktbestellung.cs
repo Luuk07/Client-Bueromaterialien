@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Büromaterialbestellungen.Classes.Container;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +15,9 @@ namespace Büromaterialbestellungen.GUI
     {
         
         UCAddingProduct addingProduct;
-        FormStart formStart = new FormStart();
+
+        bool blocker = false;
+      
 
         public FormProduktbestellung()
         {
@@ -26,7 +29,7 @@ namespace Büromaterialbestellungen.GUI
 
             addingProduct.added += (s, e) =>
             {
-                shoppingCart.Items.Add(addingProduct.Product); // automatisch Liste aktualisieren
+                shoppingCart.Items.Add(addingProduct.Product);
             };
 
         }
@@ -53,9 +56,38 @@ namespace Büromaterialbestellungen.GUI
 
         private void shoppingCart_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (shoppingCart.SelectedItem != null)
+            if (blocker)
             {
-                shoppingCart.Items.Remove(shoppingCart.SelectedItem);
+                return;
+            }
+            var selectedProduct = (CclContProduct)shoppingCart.SelectedItem;
+            
+            if (selectedProduct != null)
+            {
+                if (selectedProduct.Anzahl >1)
+                {
+                    selectedProduct.Anzahl --;
+
+                    blocker = true;
+                    // Index merken
+                    int index = shoppingCart.SelectedIndex;
+
+                    // Item neu zuweisen – erzwingt Update
+                    shoppingCart.Items[index] = selectedProduct;
+
+                    shoppingCart.ClearSelected();
+
+                    blocker = false;
+
+                  
+
+                }
+                else
+                {
+              
+                    shoppingCart.Items.Remove(shoppingCart.SelectedItem);
+                
+                }
             }
         }
 
@@ -65,10 +97,17 @@ namespace Büromaterialbestellungen.GUI
             shoppingCart.Items.Clear();
         }
 
-        private void buttonMenu_Click(object sender, EventArgs e)
+        private void Produckt_MouseClick(object sender, MouseEventArgs e)
         {
-            this.Hide();
-            formStart.ShowDialog();
+            if (e.Button == MouseButtons.Right)  
+            {
+                int index = shoppingCart.IndexFromPoint(e.Location);
+
+                if (index != ListBox.NoMatches)
+                {
+                    shoppingCart.Items.Remove(shoppingCart.Items[index]);
+                }
+            }
         }
     }
 }

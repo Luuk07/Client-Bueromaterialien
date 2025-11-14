@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Büromaterialbestellungen.Classes.Container;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +13,19 @@ namespace Büromaterialbestellungen.GUI
 {
     public partial class UCAddingProduct : UserControl
     {
-        public int labelCount = 0;
+        public int labelCount = 1;
         public event EventHandler added;
         public string productName
         {
             get => labelProductName.Text;
             set => labelProductName.Text = value;
         }
-        public string Product { get => $"{productName}, Anzahl:{labelCount}"; }
+
+        public CclContProduct Product { get
+            {
+                return new CclContProduct { Name = productName, Anzahl = labelCount };
+            }
+        }
         public UCAddingProduct()
         {
             InitializeComponent();
@@ -47,5 +53,9 @@ namespace Büromaterialbestellungen.GUI
         {
             added?.Invoke(this, EventArgs.Empty);
         }
+
+      
+
+
     }
 }

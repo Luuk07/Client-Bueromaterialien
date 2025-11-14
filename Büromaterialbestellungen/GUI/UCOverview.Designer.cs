@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.Überschrift = new System.Windows.Forms.Label();
-            this.productList = new System.Windows.Forms.ListBox();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // Überschrift
@@ -42,22 +42,22 @@
             this.Überschrift.TabIndex = 0;
             this.Überschrift.Text = "Anzahl ";
             // 
-            // productList
+            // listView1
             // 
-            this.productList.FormattingEnabled = true;
-            this.productList.ItemHeight = 25;
-            this.productList.Location = new System.Drawing.Point(13, 58);
-            this.productList.Name = "productList";
-            this.productList.Size = new System.Drawing.Size(234, 379);
-            this.productList.TabIndex = 1;
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(13, 58);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(227, 399);
+            this.listView1.TabIndex = 1;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
-            // UCOverviewcs
+            // UCOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.productList);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.Überschrift);
-            this.Name = "UCOverviewcs";
+            this.Name = "UCOverview";
             this.Size = new System.Drawing.Size(368, 549);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -67,6 +67,6 @@
         #endregion
 
         private System.Windows.Forms.Label Überschrift;
-        private System.Windows.Forms.ListBox productList;
+        private System.Windows.Forms.ListView listView1;
     }
 }

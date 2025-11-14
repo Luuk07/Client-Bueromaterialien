@@ -13,29 +13,48 @@ namespace Büromaterialbestellungen
 {
     public partial class FormStart : Form
     {
-        FormDashboard dashboard;
-        FormProduktbestellung produktbestellung;
         public FormStart()
         {
             InitializeComponent();
+           
         }
 
        
 
         private void buttonDashboard_Click(object sender, EventArgs e)
         {
+            var dashboard = new FormDashboard();
+            //Wenn Owner geschlossen wird, wird auch alles darunter geschlossen
+            dashboard.Owner = this;
+
+            //Wenn dashboard geschlossen wird, wird das Startmenü wieder gezeigt
+            dashboard.FormClosing += (s, args) =>
+            {
+                this.Show();
+            };
+
             this.Hide();
-            dashboard = new FormDashboard();
-            dashboard.ShowDialog();
-            
+            dashboard.Show();
 
         }
 
         private void buttonProduktbestellung_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            produktbestellung = new FormProduktbestellung();
-            produktbestellung.ShowDialog();
+            var produktbestellung = new FormProduktbestellung();
+
+          
+            produktbestellung.Owner = this;
+
+            produktbestellung.FormClosing += (s, args) =>
+            {
+                this.Show();
+            };
+
+            this.Hide(); 
+            produktbestellung.Show(); 
         }
+
+
+
     }
 }

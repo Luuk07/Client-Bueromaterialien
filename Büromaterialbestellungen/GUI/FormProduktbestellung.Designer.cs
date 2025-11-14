@@ -34,7 +34,6 @@
             this.shoppingCart = new System.Windows.Forms.ListBox();
             this.labelShoppingCart = new System.Windows.Forms.Label();
             this.buttonSend = new System.Windows.Forms.Button();
-            this.buttonMenu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -70,6 +69,7 @@
             this.shoppingCart.Size = new System.Drawing.Size(421, 754);
             this.shoppingCart.TabIndex = 3;
             this.shoppingCart.SelectedIndexChanged += new System.EventHandler(this.shoppingCart_SelectedIndexChanged);
+            this.shoppingCart.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Produckt_MouseClick);
             // 
             // labelShoppingCart
             // 
@@ -90,22 +90,11 @@
             this.buttonSend.UseVisualStyleBackColor = true;
             this.buttonSend.Click += new System.EventHandler(this.buttonSend_Click);
             // 
-            // buttonMenu
-            // 
-            this.buttonMenu.Location = new System.Drawing.Point(385, 33);
-            this.buttonMenu.Name = "buttonMenu";
-            this.buttonMenu.Size = new System.Drawing.Size(405, 54);
-            this.buttonMenu.TabIndex = 6;
-            this.buttonMenu.Text = "Menü";
-            this.buttonMenu.UseVisualStyleBackColor = true;
-            this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
-            // 
             // FormProduktbestellung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1255, 886);
-            this.Controls.Add(this.buttonMenu);
             this.Controls.Add(this.buttonSend);
             this.Controls.Add(this.labelShoppingCart);
             this.Controls.Add(this.shoppingCart);
@@ -127,6 +116,5 @@
         private System.Windows.Forms.ListBox shoppingCart;
         private System.Windows.Forms.Label labelShoppingCart;
         private System.Windows.Forms.Button buttonSend;
-        private System.Windows.Forms.Button buttonMenu;
     }
 }
