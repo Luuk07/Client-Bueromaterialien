@@ -52,6 +52,9 @@ namespace Büromaterialbestellungen.GUI
         private void buttonAddToShopingCart_Click(object sender, EventArgs e)
         {
             added?.Invoke(this, EventArgs.Empty);
+            labelCount = 1;
+            labelProductCount.Text = labelCount.ToString();
+
         }
 
       

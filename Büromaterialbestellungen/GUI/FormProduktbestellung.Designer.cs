@@ -76,9 +76,9 @@
             this.labelShoppingCart.AutoSize = true;
             this.labelShoppingCart.Location = new System.Drawing.Point(817, 94);
             this.labelShoppingCart.Name = "labelShoppingCart";
-            this.labelShoppingCart.Size = new System.Drawing.Size(143, 25);
+            this.labelShoppingCart.Size = new System.Drawing.Size(234, 50);
             this.labelShoppingCart.TabIndex = 4;
-            this.labelShoppingCart.Text = "ShoppingCart";
+            this.labelShoppingCart.Text = "Warenkorb";
             // 
             // buttonSend
             // 
