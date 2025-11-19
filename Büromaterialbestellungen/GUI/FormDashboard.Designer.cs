@@ -32,7 +32,6 @@
             this.ucOverviewErhalten = new Büromaterialbestellungen.GUI.UCOverview();
             this.ucOverviewVorbestellt = new Büromaterialbestellungen.GUI.UCOverview();
             this.ucOverviewBestellt = new Büromaterialbestellungen.GUI.UCOverview();
-            this.buttonMenu = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.labelBestellt = new System.Windows.Forms.Label();
             this.labelVorbestellt = new System.Windows.Forms.Label();
@@ -66,15 +65,6 @@
             this.ucOverviewBestellt.Name = "ucOverviewBestellt";
             this.ucOverviewBestellt.Size = new System.Drawing.Size(351, 549);
             this.ucOverviewBestellt.TabIndex = 5;
-            // 
-            // buttonMenu
-            // 
-            this.buttonMenu.Location = new System.Drawing.Point(925, 690);
-            this.buttonMenu.Name = "buttonMenu";
-            this.buttonMenu.Size = new System.Drawing.Size(238, 76);
-            this.buttonMenu.TabIndex = 8;
-            this.buttonMenu.Text = "Menü";
-            this.buttonMenu.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -121,7 +111,6 @@
             this.Controls.Add(this.labelVorbestellt);
             this.Controls.Add(this.labelBestellt);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonMenu);
             this.Controls.Add(this.ucOverviewErhalten);
             this.Controls.Add(this.ucOverviewVorbestellt);
             this.Controls.Add(this.ucOverviewBestellt);
@@ -139,7 +128,6 @@
         private UCOverview ucOverviewBestellt;
         private UCOverview ucOverviewVorbestellt;
         private UCOverview ucOverviewErhalten;
-        private System.Windows.Forms.Button buttonMenu;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label labelBestellt;
         private System.Windows.Forms.Label labelVorbestellt;

@@ -1,4 +1,7 @@
 ﻿using Büromaterialbestellungen.Classes.Container;
+using Büromaterialbestellungen.Classes.Records;
+using CDS.Classes;
+using CDS.Enumerations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,14 +27,19 @@ namespace Büromaterialbestellungen.GUI
             InitializeComponent();
             OpenTree();
             addingProduct = new UCAddingProduct();
+            addingProduct.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
+
             addingProduct.Location = new Point(230, 44); 
-            this.Controls.Add(addingProduct);
 
             addingProduct.added += (s, e) =>
             {
                 shoppingCart.Items.Add(addingProduct.Product);
             };
 
+            this.Controls.Add(addingProduct);
+
+            this.MaximizeBox = false;
+            this.MaximumSize = this.Size;
         }
 
         void OpenTree()
@@ -64,9 +72,9 @@ namespace Büromaterialbestellungen.GUI
             
             if (selectedProduct != null)
             {
-                if (selectedProduct.Anzahl >1)
+                if (selectedProduct.Amount >1)
                 {
-                    selectedProduct.Anzahl --;
+                    selectedProduct.Amount --;
 
                     blocker = true;
                     // Index merken
@@ -94,7 +102,35 @@ namespace Büromaterialbestellungen.GUI
         private void buttonSend_Click(object sender, EventArgs e)
         {
             //WarenKorb in die Datenbank
-            shoppingCart.Items.Clear();
+            try
+            {
+            
+                CclCDSDatabase clSvcCDSDatabase = new CclCDSDatabase(CDSStorageType.MariaDB);
+                CclCDSTable<CclRecProdut> clProductList = new CclCDSTable<CclRecProdut>(clSvcCDSDatabase.BaseDB.CreateDataAccess());
+
+             
+
+                foreach (CclContProduct item in shoppingCart.Items) { 
+
+                    var rec = new CclRecProdut();
+                    rec.ProductName = item.ProductName;
+                    rec.Amount = item.Amount;
+                    rec.UserName = textBoxUserName.Text;
+
+
+                    clProductList.AddNewRecord(rec);
+                }
+
+
+                clProductList.SaveData();
+
+                shoppingCart.Items.Clear();
+
+            }
+            catch (Exception excError)
+            {
+                MessageBox.Show(excError.Message);
+            }
         }
 
         private void Produckt_MouseClick(object sender, MouseEventArgs e)
@@ -110,6 +146,6 @@ namespace Büromaterialbestellungen.GUI
             }
         }
 
-  
+      
     }
 }

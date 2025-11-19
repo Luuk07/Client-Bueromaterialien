@@ -1,0 +1,76 @@
+﻿using CDS.Classes.Attributes;
+using CDS.Classes.Data;
+using CDS.Classes.Tools;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Büromaterialbestellungen.Classes.Records
+{
+    [CDSTable("Products", "DB", "")]
+    public class CclRecProdut : CclCDSRecBase
+    {
+        #region Constants
+        ///**************************************************
+        /// Constants
+        private const string I_strCryptoKey = "e950tu dfb-<y.dx epotz sölrdjt a94et dflkgd";
+
+        #endregion Constants
+
+        #region Instance variables
+        ///**************************************************
+        /// Instance variables
+        private string I_strProductName;
+        private int I_intAmount;
+        private string I_strUserName;
+        //private string I_strPassword;
+
+        #endregion Instance variables
+
+        #region Properties
+        ///**************************************************
+        /// Properties
+        [CDSField(0, 0, true, false, false, true)] public int ID { get; set; }
+
+        public string ProductName { get { return I_strProductName; } set { SetValue(ref I_strProductName, value); } }
+        public int Amount { get { return I_intAmount; } set { SetValue(ref I_intAmount, value); } }
+        public string UserName { get { return I_strUserName; } set { SetValue(ref I_strUserName, value); } }
+
+        //[CDSField(0, 0, false, false, true)] public string Password { get { return I_strPassword; } set { SetValue(ref I_strPassword, value); } }
+        //[CDSField(256, 0)]
+        //public string EncryptedPassword
+        //{
+        //    get { return CstToolsEncryption.Encrypt(Password, I_strCryptoKey); }
+        //    set { Password = CstToolsEncryption.Decrypt(value, I_strCryptoKey); }
+        //}
+
+        #endregion Properties
+
+        #region Initialization
+        ///**************************************************
+        /// <summary>
+        /// Standard constructor. Initializes the instance.
+        /// </summary>
+        public CclRecProdut() : this(string.Empty, int.MinValue, string.Empty) { }
+
+        ///**************************************************
+        /// <summary>
+        /// Extended constructor. Initializes the instance.
+        /// </summary>
+        /// <param name="_strUser">Value for 'ArchivePath'.</param>
+        /// <param name="_strDomain">Value for 'ErrorPath'.</param>
+        /// <param name="_strPassword">Value for 'ErrorMailSender'.</param>
+        /// <param name="_iTimeOut">Value for 'ErrorMailReceiver'.</param>
+        public CclRecProdut(string _strProductName, int _intAmount, string _strUserName)
+        {
+            ProductName = _strProductName;
+            Amount = _intAmount;
+            //Password = _strPassword;
+            UserName = _strUserName;
+        }
+
+        #endregion Initialization
+    }
+}

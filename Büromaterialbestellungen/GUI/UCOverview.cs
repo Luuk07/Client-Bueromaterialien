@@ -12,9 +12,17 @@ namespace Büromaterialbestellungen.GUI
 {
     public partial class UCOverview : UserControl
     {
+
+        
+        public ListView BestelltListView
+        {
+            get { return listViewUC; }
+        }
+
         public UCOverview()
         {
             InitializeComponent();
+            
         }
 
        

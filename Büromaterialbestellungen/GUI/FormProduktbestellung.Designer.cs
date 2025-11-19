@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.labelHeader = new System.Windows.Forms.Label();
             this.productTree = new System.Windows.Forms.TreeView();
             this.shoppingCart = new System.Windows.Forms.ListBox();
@@ -36,21 +36,21 @@
             this.buttonSend = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textBoxUserName
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 61);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(314, 31);
-            this.textBox1.TabIndex = 0;
+            this.textBoxUserName.Location = new System.Drawing.Point(12, 61);
+            this.textBoxUserName.Name = "textBoxUserName";
+            this.textBoxUserName.Size = new System.Drawing.Size(314, 31);
+            this.textBoxUserName.TabIndex = 0;
             // 
             // labelHeader
             // 
             this.labelHeader.AutoSize = true;
             this.labelHeader.Location = new System.Drawing.Point(12, 33);
             this.labelHeader.Name = "labelHeader";
-            this.labelHeader.Size = new System.Drawing.Size(86, 25);
+            this.labelHeader.Size = new System.Drawing.Size(151, 25);
             this.labelHeader.TabIndex = 1;
-            this.labelHeader.Text = "Produkt";
+            this.labelHeader.Text = "Benutzername";
             // 
             // productTree
             // 
@@ -76,7 +76,7 @@
             this.labelShoppingCart.AutoSize = true;
             this.labelShoppingCart.Location = new System.Drawing.Point(817, 94);
             this.labelShoppingCart.Name = "labelShoppingCart";
-            this.labelShoppingCart.Size = new System.Drawing.Size(234, 50);
+            this.labelShoppingCart.Size = new System.Drawing.Size(117, 25);
             this.labelShoppingCart.TabIndex = 4;
             this.labelShoppingCart.Text = "Warenkorb";
             // 
@@ -100,7 +100,7 @@
             this.Controls.Add(this.shoppingCart);
             this.Controls.Add(this.productTree);
             this.Controls.Add(this.labelHeader);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxUserName);
             this.Name = "FormProduktbestellung";
             this.Text = "FormProduktbestellung";
             this.ResumeLayout(false);
@@ -110,7 +110,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxUserName;
         private System.Windows.Forms.Label labelHeader;
         private System.Windows.Forms.TreeView productTree;
         private System.Windows.Forms.ListBox shoppingCart;

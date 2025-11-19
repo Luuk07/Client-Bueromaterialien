@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.Überschrift = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewUC = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // Überschrift
@@ -42,20 +42,20 @@
             this.Überschrift.TabIndex = 0;
             this.Überschrift.Text = "Anzahl ";
             // 
-            // listView1
+            // listViewUC
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(13, 58);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(227, 399);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listViewUC.HideSelection = false;
+            this.listViewUC.Location = new System.Drawing.Point(13, 58);
+            this.listViewUC.Name = "listViewUC";
+            this.listViewUC.Size = new System.Drawing.Size(342, 475);
+            this.listViewUC.TabIndex = 1;
+            this.listViewUC.UseCompatibleStateImageBehavior = false;
             // 
             // UCOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.listViewUC);
             this.Controls.Add(this.Überschrift);
             this.Name = "UCOverview";
             this.Size = new System.Drawing.Size(368, 549);
@@ -67,6 +67,6 @@
         #endregion
 
         private System.Windows.Forms.Label Überschrift;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listViewUC;
     }
 }

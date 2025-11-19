@@ -23,7 +23,7 @@ namespace Büromaterialbestellungen.GUI
 
         public CclContProduct Product { get
             {
-                return new CclContProduct { Name = productName, Anzahl = labelCount };
+                return new CclContProduct { ProductName = productName, Amount = labelCount };
             }
         }
         public UCAddingProduct()
