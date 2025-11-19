@@ -101,6 +101,16 @@ namespace Büromaterialbestellungen.GUI
 
         private void buttonSend_Click(object sender, EventArgs e)
         {
+            if(textBoxUserName.Text.Length == 0)
+            {
+                MessageBox.Show("Bitte gib den Namen ein für den bestellt werden soll");
+                return;
+            }
+            if (shoppingCart.Items.Count == 0)
+            {
+                MessageBox.Show("Bitte füge ein Produkt hinzu");
+                return;
+            }
             //WarenKorb in die Datenbank
             try
             {
@@ -116,6 +126,7 @@ namespace Büromaterialbestellungen.GUI
                     rec.ProductName = item.ProductName;
                     rec.Amount = item.Amount;
                     rec.UserName = textBoxUserName.Text;
+                    rec.IsPreOrdered = true;
 
 
                     clProductList.AddNewRecord(rec);

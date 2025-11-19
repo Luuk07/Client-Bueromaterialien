@@ -14,10 +14,12 @@ namespace Büromaterialbestellungen.GUI
     {
 
         
-        public ListView BestelltListView
+        public ListView ListViewUC
         {
             get { return listViewUC; }
         }
+
+       
 
         public UCOverview()
         {

@@ -21,13 +21,31 @@ namespace Büromaterialbestellungen.GUI
         {
             InitializeComponent();
 
-            ucOverviewBestellt.BestelltListView.View = View.Details;
-            ucOverviewBestellt.BestelltListView.FullRowSelect = true;
-            ucOverviewBestellt.BestelltListView.GridLines = true;
+            ucOverviewBestellt.ListViewUC.View = View.Details;
+            ucOverviewBestellt.ListViewUC.FullRowSelect = true;
+            ucOverviewBestellt.ListViewUC.GridLines = true;
 
-            ucOverviewBestellt.BestelltListView.Columns.Add("Produktname");
-            ucOverviewBestellt.BestelltListView.Columns.Add("Menge");
-            ucOverviewBestellt.BestelltListView.Columns.Add("Benutzername");
+            ucOverviewBestellt.ListViewUC.Columns.Add("Produktname");
+            ucOverviewBestellt.ListViewUC.Columns.Add("Menge");
+            ucOverviewBestellt.ListViewUC.Columns.Add("Benutzername");
+
+
+            ucOverviewVorbestellt.ListViewUC.View = View.Details;
+            ucOverviewVorbestellt.ListViewUC.FullRowSelect = true;
+            ucOverviewVorbestellt.ListViewUC.GridLines = true;
+
+            ucOverviewVorbestellt.ListViewUC.Columns.Add("Produktname");
+            ucOverviewVorbestellt.ListViewUC.Columns.Add("Menge");
+            ucOverviewVorbestellt.ListViewUC.Columns.Add("Benutzername");
+
+
+            ucOverviewErhalten.ListViewUC.View = View.Details;
+            ucOverviewErhalten.ListViewUC.FullRowSelect = true;
+            ucOverviewErhalten.ListViewUC.GridLines = true;
+
+            ucOverviewErhalten.ListViewUC.Columns.Add("Produktname");
+            ucOverviewErhalten.ListViewUC.Columns.Add("Menge");
+            ucOverviewErhalten.ListViewUC.Columns.Add("Benutzername");
 
             this.MaximizeBox = false;
             this.MaximumSize = this.Size;
@@ -50,7 +68,7 @@ namespace Büromaterialbestellungen.GUI
                 var lvi = new ListViewItem(item.ProductName);            
                 lvi.SubItems.Add(item.Amount.ToString());         
                 lvi.SubItems.Add(item.UserName);
-                ucOverviewBestellt.BestelltListView.Items.Add(lvi);
+                ucOverviewVorbestellt.ListViewUC.Items.Add(lvi);
                
             }
 

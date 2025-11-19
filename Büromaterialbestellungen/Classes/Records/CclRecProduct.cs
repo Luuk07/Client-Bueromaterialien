@@ -25,6 +25,10 @@ namespace Büromaterialbestellungen.Classes.Records
         private string I_strProductName;
         private int I_intAmount;
         private string I_strUserName;
+        private bool I_boolIsPreOrdered;
+        private bool I_boolIsOrdered;
+        private bool I_boolIsReceived;
+        
         //private string I_strPassword;
 
         #endregion Instance variables
@@ -37,6 +41,14 @@ namespace Büromaterialbestellungen.Classes.Records
         public string ProductName { get { return I_strProductName; } set { SetValue(ref I_strProductName, value); } }
         public int Amount { get { return I_intAmount; } set { SetValue(ref I_intAmount, value); } }
         public string UserName { get { return I_strUserName; } set { SetValue(ref I_strUserName, value); } }
+
+        public bool IsPreOrdered { get { return I_boolIsPreOrdered; } set { SetValue(ref I_boolIsPreOrdered, value); } }
+
+        public bool IsOrdered { get { return I_boolIsOrdered; } set { SetValue(ref I_boolIsOrdered, value); } }
+
+        public bool IsReceived { get { return I_boolIsReceived; } set { SetValue(ref I_boolIsReceived, value); } }
+
+
 
         //[CDSField(0, 0, false, false, true)] public string Password { get { return I_strPassword; } set { SetValue(ref I_strPassword, value); } }
         //[CDSField(256, 0)]
@@ -53,7 +65,7 @@ namespace Büromaterialbestellungen.Classes.Records
         /// <summary>
         /// Standard constructor. Initializes the instance.
         /// </summary>
-        public CclRecProdut() : this(string.Empty, int.MinValue, string.Empty) { }
+        public CclRecProdut() : this(string.Empty, int.MinValue, string.Empty, true, false, false) { }
 
         ///**************************************************
         /// <summary>
@@ -63,12 +75,15 @@ namespace Büromaterialbestellungen.Classes.Records
         /// <param name="_strDomain">Value for 'ErrorPath'.</param>
         /// <param name="_strPassword">Value for 'ErrorMailSender'.</param>
         /// <param name="_iTimeOut">Value for 'ErrorMailReceiver'.</param>
-        public CclRecProdut(string _strProductName, int _intAmount, string _strUserName)
+        public CclRecProdut(string _strProductName, int _intAmount, string _strUserName, bool _boolIsPreOrdered, bool _boolIsOrdered, bool _boolIsReceived)
         {
             ProductName = _strProductName;
             Amount = _intAmount;
             //Password = _strPassword;
             UserName = _strUserName;
+            IsPreOrdered = _boolIsPreOrdered;
+            IsOrdered = _boolIsOrdered;
+            IsReceived = _boolIsReceived;
         }
 
         #endregion Initialization
