@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.labelHeader = new System.Windows.Forms.Label();
             this.productTree = new System.Windows.Forms.TreeView();
             this.shoppingCart = new System.Windows.Forms.ListBox();
@@ -36,13 +35,6 @@
             this.buttonSend = new System.Windows.Forms.Button();
             this.dropDownBoxUserNames = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // textBoxUserName
-            // 
-            this.textBoxUserName.Location = new System.Drawing.Point(323, 57);
-            this.textBoxUserName.Name = "textBoxUserName";
-            this.textBoxUserName.Size = new System.Drawing.Size(314, 31);
-            this.textBoxUserName.TabIndex = 0;
             // 
             // labelHeader
             // 
@@ -96,7 +88,7 @@
             this.dropDownBoxUserNames.FormattingEnabled = true;
             this.dropDownBoxUserNames.Location = new System.Drawing.Point(12, 61);
             this.dropDownBoxUserNames.Name = "dropDownBoxUserNames";
-            this.dropDownBoxUserNames.Size = new System.Drawing.Size(110, 33);
+            this.dropDownBoxUserNames.Size = new System.Drawing.Size(446, 33);
             this.dropDownBoxUserNames.TabIndex = 6;
             // 
             // FormProduktbestellung
@@ -110,7 +102,6 @@
             this.Controls.Add(this.shoppingCart);
             this.Controls.Add(this.productTree);
             this.Controls.Add(this.labelHeader);
-            this.Controls.Add(this.textBoxUserName);
             this.Name = "FormProduktbestellung";
             this.Text = "FormProduktbestellung";
             this.ResumeLayout(false);
@@ -119,8 +110,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBoxUserName;
         private System.Windows.Forms.Label labelHeader;
         private System.Windows.Forms.TreeView productTree;
         private System.Windows.Forms.ListBox shoppingCart;

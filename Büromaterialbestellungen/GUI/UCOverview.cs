@@ -37,6 +37,9 @@ namespace Büromaterialbestellungen.GUI
 
         private void mouseDoubleClick(object sender, MouseEventArgs e)
         {
+            var result = MessageBox.Show("Möchten Sie diesen Eintrag wirklich löschen?", "Eintrag löschen", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+                return;
             CclCDSDatabase db = new CclCDSDatabase(CDSStorageType.MariaDB);
             CclCDSTable<CclRecProdut> products =
                new CclCDSTable<CclRecProdut>(db.BaseDB.CreateDataAccess());
@@ -63,11 +66,7 @@ namespace Büromaterialbestellungen.GUI
                     products.SaveData();
                     listViewUC.Items.Remove(item);
                 }
-                    
-
-                
-              
-
+        
             }
         }
     }

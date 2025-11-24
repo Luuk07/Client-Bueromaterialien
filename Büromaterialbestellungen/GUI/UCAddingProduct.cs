@@ -21,6 +21,8 @@ namespace Büromaterialbestellungen.GUI
             set => labelProductName.Text = value;
         }
 
+        
+
         public CclContProduct Product { get
             {
                 return new CclContProduct { ProductName = productName, Amount = labelCount };

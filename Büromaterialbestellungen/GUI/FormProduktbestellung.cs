@@ -15,12 +15,11 @@ using System.Windows.Forms;
 
 namespace Büromaterialbestellungen.GUI
 {
+    // Produktbestellung Formular
     public partial class FormProduktbestellung : Form
     {
         
         UCAddingProduct addingProduct;
-      
-
         bool blocker = false;
       
 
@@ -34,7 +33,7 @@ namespace Büromaterialbestellungen.GUI
             addingProduct.Location = new Point(230, 44);
 
 
-            dropDownBoxUserNames.Items.AddRange(new string[] { "Dilshod Akramov", "Ralf Biniasch", "Jens Ceasar", "Heiko Dittrich", "Tjalf Ceasar" });
+            dropDownBoxUserNames.Items.AddRange(new string[] { "Dilshod Akramov", "Ralf Biniasch", "Jens Ceasar", "Heiko Dittrich", "Tjalf Ceasar", "Luuk Pehlgrim" });
 
             AddToShopingcart();
 
@@ -55,10 +54,17 @@ namespace Büromaterialbestellungen.GUI
                      MessageBox.Show("Bitte gib ein Produkt an");
                      return;
                  }
-                 else
+
+                 var existingItem = shoppingCart.Items
+                     .Cast<object>()                      
+                     .FirstOrDefault(uc => uc != null &&
+                      uc.ToString().Contains(addingProduct.Product.ProductName));
+
+                 if (existingItem != null)
                  {
-                     shoppingCart.Items.Add(addingProduct.Product);
+                     shoppingCart.Items.Remove(existingItem);
                  }
+                 shoppingCart.Items.Add(addingProduct.Product);
              };
             
 
@@ -93,39 +99,39 @@ namespace Büromaterialbestellungen.GUI
 
         private void shoppingCart_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (blocker)
-            {
-                return;
-            }
-            var selectedProduct = (CclContProduct)shoppingCart.SelectedItem;
+        //    if (blocker)
+        //    {
+        //        return;
+        //    }
+        //    var selectedProduct = (CclContProduct)shoppingCart.SelectedItem;
             
-            if (selectedProduct != null)
-            {
-                if (selectedProduct.Amount >1)
-                {
-                    selectedProduct.Amount --;
+        //    if (selectedProduct != null)
+        //    {
+        //        if (selectedProduct.Amount >1)
+        //        {
+        //            selectedProduct.Amount --;
 
-                    blocker = true;
-                    // Index merken
-                    int index = shoppingCart.SelectedIndex;
+        //            blocker = true;
+        //            // Index merken
+        //            int index = shoppingCart.SelectedIndex;
 
-                    // Item neu zuweisen – erzwingt Update
-                    shoppingCart.Items[index] = selectedProduct;
+        //            // Item neu zuweisen – erzwingt Update
+        //            shoppingCart.Items[index] = selectedProduct;
 
-                    shoppingCart.ClearSelected();
+        //            shoppingCart.ClearSelected();
 
-                    blocker = false;
+        //            blocker = false;
 
                   
 
-                }
-                else
-                {
+        //        }
+        //        else
+        //        {
               
-                    shoppingCart.Items.Remove(shoppingCart.SelectedItem);
+        //            shoppingCart.Items.Remove(shoppingCart.SelectedItem);
                 
-                }
-            }
+        //        }
+        //    }
         }
 
         private void buttonSend_Click(object sender, EventArgs e)
@@ -177,7 +183,7 @@ namespace Büromaterialbestellungen.GUI
 
         private void Produckt_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)  
+            if (e.Button == MouseButtons.Middle)  
             {
                 int index = shoppingCart.IndexFromPoint(e.Location);
 
@@ -185,6 +191,34 @@ namespace Büromaterialbestellungen.GUI
                 {
                     shoppingCart.Items.Remove(shoppingCart.Items[index]);
                 }
+            }
+            if(e.Button == MouseButtons.Right)
+            {
+                int index = shoppingCart.IndexFromPoint(e.Location);
+                if (index != ListBox.NoMatches)
+                {
+                    var selectedProduct = (CclContProduct)shoppingCart.Items[index];
+                    selectedProduct.Amount++;
+                    shoppingCart.Items[index] = shoppingCart.Items[index];
+                    shoppingCart.Refresh();
+                }
+                // Linksklick - nichts tun, da dies bereits im SelectedIndexChanged-Ereignis behandelt wird
+            }
+            if (e.Button == MouseButtons.Left)
+            {
+                int index = shoppingCart.IndexFromPoint(e.Location);
+                if (index != ListBox.NoMatches)
+                {
+                    var selectedProduct = (CclContProduct)shoppingCart.Items[index];
+                    selectedProduct.Amount--;
+                    shoppingCart.Items[index] = shoppingCart.Items[index];
+                    shoppingCart.Refresh();
+                    if( selectedProduct.Amount == 0)
+                    {
+                        shoppingCart.Items.Remove(shoppingCart.Items[index]);
+                    }
+                }
+                // Linksklick - nichts tun, da dies bereits im SelectedIndexChanged-Ereignis behandelt wird
             }
         }
 

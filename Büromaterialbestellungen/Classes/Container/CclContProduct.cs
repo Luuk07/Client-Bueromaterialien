@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Büromaterialbestellungen.Classes.Container
 {
+    // Container class for products in the shopping cart
     public class CclContProduct
     {
         public string ProductName { get; set; }

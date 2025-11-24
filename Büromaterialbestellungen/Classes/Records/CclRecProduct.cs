@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace Büromaterialbestellungen.Classes.Records
 {
+
+    //Record for Products
+
     [CDSTable("Products", "DB", "")]
     public class CclRecProdut : CclCDSRecBase
     {
@@ -53,13 +56,7 @@ namespace Büromaterialbestellungen.Classes.Records
 
 
 
-        //[CDSField(0, 0, false, false, true)] public string Password { get { return I_strPassword; } set { SetValue(ref I_strPassword, value); } }
-        //[CDSField(256, 0)]
-        //public string EncryptedPassword
-        //{
-        //    get { return CstToolsEncryption.Encrypt(Password, I_strCryptoKey); }
-        //    set { Password = CstToolsEncryption.Decrypt(value, I_strCryptoKey); }
-        //}
+       
 
         #endregion Properties
 
