@@ -15,8 +15,6 @@ namespace Büromaterialbestellungen.GUI
 {
     public partial class FormDashboard : Form
     {
-      
-
         public FormDashboard()
         {
             InitializeComponent();
@@ -25,15 +23,18 @@ namespace Büromaterialbestellungen.GUI
             ucOverviewBestellt.ListViewUC.FullRowSelect = true;
             ucOverviewBestellt.ListViewUC.GridLines = true;
 
+            ucOverviewBestellt.ListViewUC.Columns.Add("ProdID");
             ucOverviewBestellt.ListViewUC.Columns.Add("Produktname");
             ucOverviewBestellt.ListViewUC.Columns.Add("Menge");
             ucOverviewBestellt.ListViewUC.Columns.Add("Benutzername");
+
 
 
             ucOverviewVorbestellt.ListViewUC.View = View.Details;
             ucOverviewVorbestellt.ListViewUC.FullRowSelect = true;
             ucOverviewVorbestellt.ListViewUC.GridLines = true;
 
+            ucOverviewVorbestellt.ListViewUC.Columns.Add("ProdID");
             ucOverviewVorbestellt.ListViewUC.Columns.Add("Produktname");
             ucOverviewVorbestellt.ListViewUC.Columns.Add("Menge");
             ucOverviewVorbestellt.ListViewUC.Columns.Add("Benutzername");
@@ -43,18 +44,19 @@ namespace Büromaterialbestellungen.GUI
             ucOverviewErhalten.ListViewUC.FullRowSelect = true;
             ucOverviewErhalten.ListViewUC.GridLines = true;
 
+            ucOverviewErhalten.ListViewUC.Columns.Add("ProdID");
             ucOverviewErhalten.ListViewUC.Columns.Add("Produktname");
             ucOverviewErhalten.ListViewUC.Columns.Add("Menge");
             ucOverviewErhalten.ListViewUC.Columns.Add("Benutzername");
 
             this.MaximizeBox = false;
             this.MaximumSize = this.Size;
-            onEvent();
+            getDataFromDB();
 
 
         }
    
-        public void onEvent()
+        public void getDataFromDB()
         {
             CclCDSDatabase db = new CclCDSDatabase(CDSStorageType.MariaDB);
             CclCDSTable<CclRecProdut> products =
@@ -65,15 +67,14 @@ namespace Büromaterialbestellungen.GUI
 
             foreach (var item in products)
             {
-                var lvi = new ListViewItem(item.ProductName);            
+                var lvi = new ListViewItem(item.ID.ToString()); 
+                lvi.SubItems.Add(item.ProductName);
                 lvi.SubItems.Add(item.Amount.ToString());         
                 lvi.SubItems.Add(item.UserName);
+                lvi.Tag = item;
                 ucOverviewVorbestellt.ListViewUC.Items.Add(lvi);
                
             }
-
-
-
         }
     }
 }

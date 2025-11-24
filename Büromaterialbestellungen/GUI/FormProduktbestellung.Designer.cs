@@ -34,11 +34,12 @@
             this.shoppingCart = new System.Windows.Forms.ListBox();
             this.labelShoppingCart = new System.Windows.Forms.Label();
             this.buttonSend = new System.Windows.Forms.Button();
+            this.dropDownBoxUserNames = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // textBoxUserName
             // 
-            this.textBoxUserName.Location = new System.Drawing.Point(12, 61);
+            this.textBoxUserName.Location = new System.Drawing.Point(323, 57);
             this.textBoxUserName.Name = "textBoxUserName";
             this.textBoxUserName.Size = new System.Drawing.Size(314, 31);
             this.textBoxUserName.TabIndex = 0;
@@ -90,11 +91,20 @@
             this.buttonSend.UseVisualStyleBackColor = true;
             this.buttonSend.Click += new System.EventHandler(this.buttonSend_Click);
             // 
+            // dropDownBoxUserNames
+            // 
+            this.dropDownBoxUserNames.FormattingEnabled = true;
+            this.dropDownBoxUserNames.Location = new System.Drawing.Point(12, 61);
+            this.dropDownBoxUserNames.Name = "dropDownBoxUserNames";
+            this.dropDownBoxUserNames.Size = new System.Drawing.Size(110, 33);
+            this.dropDownBoxUserNames.TabIndex = 6;
+            // 
             // FormProduktbestellung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1255, 886);
+            this.Controls.Add(this.dropDownBoxUserNames);
             this.Controls.Add(this.buttonSend);
             this.Controls.Add(this.labelShoppingCart);
             this.Controls.Add(this.shoppingCart);
@@ -116,5 +126,6 @@
         private System.Windows.Forms.ListBox shoppingCart;
         private System.Windows.Forms.Label labelShoppingCart;
         private System.Windows.Forms.Button buttonSend;
+        private System.Windows.Forms.ComboBox dropDownBoxUserNames;
     }
 }

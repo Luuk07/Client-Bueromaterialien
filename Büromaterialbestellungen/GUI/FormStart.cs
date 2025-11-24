@@ -13,13 +13,12 @@ namespace Büromaterialbestellungen
 {
     public partial class FormStart : Form
     {
-
+       
         public FormStart()
         {
             InitializeComponent();
             this.MaximizeBox = false;
             this.MaximumSize = this.Size;
-           
         }
 
        
@@ -28,6 +27,7 @@ namespace Büromaterialbestellungen
         {
             var dashboard = new FormDashboard();
 
+           
             //Wenn Owner geschlossen wird, wird auch alles darunter geschlossen
             dashboard.Owner = this;
 
@@ -59,7 +59,11 @@ namespace Büromaterialbestellungen
             produktbestellung.Show(); 
         }
 
+        
+
 
 
     }
+
+    
 }

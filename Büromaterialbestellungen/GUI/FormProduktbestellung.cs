@@ -12,12 +12,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Büromaterialbestellungen.GUI
 {
     public partial class FormProduktbestellung : Form
     {
         
         UCAddingProduct addingProduct;
+      
 
         bool blocker = false;
       
@@ -29,19 +31,38 @@ namespace Büromaterialbestellungen.GUI
             addingProduct = new UCAddingProduct();
             addingProduct.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
 
-            addingProduct.Location = new Point(230, 44); 
+            addingProduct.Location = new Point(230, 44);
 
-            addingProduct.added += (s, e) =>
-            {
-                shoppingCart.Items.Add(addingProduct.Product);
-            };
 
+            dropDownBoxUserNames.Items.AddRange(new string[] { "Dilshod Akramov", "Ralf Biniasch", "Jens Ceasar", "Heiko Dittrich", "Tjalf Ceasar" });
+
+            AddToShopingcart();
+
+            this.Controls.Add(dropDownBoxUserNames);
             this.Controls.Add(addingProduct);
 
             this.MaximizeBox = false;
             this.MaximumSize = this.Size;
         }
 
+        public void AddToShopingcart()
+        {
+       
+             addingProduct.added += (s, e) =>
+             {
+                 if (addingProduct.productName == "Produktname")
+                 {
+                     MessageBox.Show("Bitte gib ein Produkt an");
+                     return;
+                 }
+                 else
+                 {
+                     shoppingCart.Items.Add(addingProduct.Product);
+                 }
+             };
+            
+
+        }
         void OpenTree()
         {
             TreeNode stifte = new TreeNode("Stifte");
@@ -58,6 +79,14 @@ namespace Büromaterialbestellungen.GUI
 
         private void productTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            //Wenn ein Knotenpunkt ausgewählt wird, wird es nicht übernommen
+            if (e.Node.Nodes.Count > 0)
+            {
+  
+                productTree.SelectedNode = null;
+                return;
+            }
+
             TreeNode selectedProduct = e.Node;
             addingProduct.productName = selectedProduct.Text; 
         }
@@ -101,7 +130,7 @@ namespace Büromaterialbestellungen.GUI
 
         private void buttonSend_Click(object sender, EventArgs e)
         {
-            if(textBoxUserName.Text.Length == 0)
+            if(dropDownBoxUserNames.Text.Length == 0)
             {
                 MessageBox.Show("Bitte gib den Namen ein für den bestellt werden soll");
                 return;
@@ -111,6 +140,7 @@ namespace Büromaterialbestellungen.GUI
                 MessageBox.Show("Bitte füge ein Produkt hinzu");
                 return;
             }
+
             //WarenKorb in die Datenbank
             try
             {
@@ -125,8 +155,10 @@ namespace Büromaterialbestellungen.GUI
                     var rec = new CclRecProdut();
                     rec.ProductName = item.ProductName;
                     rec.Amount = item.Amount;
-                    rec.UserName = textBoxUserName.Text;
+                    rec.UserName = dropDownBoxUserNames.Text;
                     rec.IsPreOrdered = true;
+                    
+                
 
 
                     clProductList.AddNewRecord(rec);
@@ -134,10 +166,9 @@ namespace Büromaterialbestellungen.GUI
 
 
                 clProductList.SaveData();
-
                 shoppingCart.Items.Clear();
-
             }
+
             catch (Exception excError)
             {
                 MessageBox.Show(excError.Message);
@@ -157,6 +188,6 @@ namespace Büromaterialbestellungen.GUI
             }
         }
 
-      
+       
     }
 }

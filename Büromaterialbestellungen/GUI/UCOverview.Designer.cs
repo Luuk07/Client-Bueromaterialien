@@ -50,6 +50,7 @@
             this.listViewUC.Size = new System.Drawing.Size(342, 475);
             this.listViewUC.TabIndex = 1;
             this.listViewUC.UseCompatibleStateImageBehavior = false;
+            this.listViewUC.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.mouseDoubleClick);
             // 
             // UCOverview
             // 
