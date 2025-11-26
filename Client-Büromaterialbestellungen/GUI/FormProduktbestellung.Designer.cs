@@ -121,10 +121,10 @@
         #endregion
         private System.Windows.Forms.Label labelHeader;
         private System.Windows.Forms.TreeView productTree;
-        private System.Windows.Forms.ListBox shoppingCart;
         private System.Windows.Forms.Label labelShoppingCart;
         private System.Windows.Forms.Button buttonSend;
         private System.Windows.Forms.ComboBox dropDownBoxUserNames;
         private UCAddingProduct ucAddingProduct;
+        public System.Windows.Forms.ListBox shoppingCart;
     }
 }

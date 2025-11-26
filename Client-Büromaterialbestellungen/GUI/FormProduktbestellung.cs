@@ -28,9 +28,11 @@ namespace Büromaterialbestellungen.GUI
            
             ucAddingProduct.Location = new Point(230, 44);
             ucAddingProduct.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
+            ucAddingProduct.AddToShoppingcart(this);
 
             dropDownBoxUserNames.Items.AddRange(new string[] { "Dilshod Akramov", "Ralf Biniasch", "Jens Ceasar", "Heiko Dittrich", "Tjalf Ceasar", "Luuk Pehlgrim" });
-            AddToShoppingcart();
+
+            //AddToShoppingcart();
 
             //this.Controls.Add(dropDownBoxUserNames); //Dachte man muss es immer hinzufügen, aber wenn man es im Designer hinzufügt, ist es schon da
             //this.Controls.Add(ucAddingProduct);
@@ -39,42 +41,42 @@ namespace Büromaterialbestellungen.GUI
             this.MaximumSize = this.Size;
         }
 
-        public void AddToShoppingcart()
-        {
+        //public void AddToShoppingcart()
+        //{
             
-            ucAddingProduct.added += (s, e) =>
-             {
-                 if (ucAddingProduct.productName == "Produktname")
-                 {
-                     MessageBox.Show("Bitte gib ein Produkt an");
-                     return;
-                 }
+        //    ucAddingProduct.added += (s, e) =>
+        //     {
+        //         if (ucAddingProduct.productName == "Produktname")
+        //         {
+        //             MessageBox.Show("Bitte gib ein Produkt an");
+        //             return;
+        //         }
 
-                 var existingItem = shoppingCart.Items
-                     .Cast<CclContProduct>()                      
-                     .FirstOrDefault(uc => uc != null &&
-                      uc.ToString().Contains(ucAddingProduct.Product.ProductName));
+        //         var existingItem = shoppingCart.Items
+        //             .Cast<CclContProduct>()                      
+        //             .FirstOrDefault(uc => uc != null &&
+        //              uc.ToString().Contains(ucAddingProduct.Product.ProductName));
 
-                 if (existingItem != null)
-                 {
-                     //shoppingCart.Items.Remove(existingItem);
-                     existingItem.Amount += ucAddingProduct.Product.Amount; // Jetzt wird die Menge addiert
+        //         if (existingItem != null)
+        //         {
+        //             //shoppingCart.Items.Remove(existingItem);
+        //             existingItem.Amount += ucAddingProduct.Product.Amount; // Jetzt wird die Menge addiert
 
                     
-                     //UI aktualisieren
-                     int index = shoppingCart.Items.IndexOf(existingItem);
-                     shoppingCart.Items[index] = existingItem; 
+        //             //UI aktualisieren
+        //             int index = shoppingCart.Items.IndexOf(existingItem);
+        //             shoppingCart.Items[index] = existingItem; 
 
 
-                 }
-                 else
-                 {
-                     shoppingCart.Items.Add(ucAddingProduct.Product);
-                 }
-             };
+        //         }
+        //         else
+        //         {
+        //             shoppingCart.Items.Add(ucAddingProduct.Product);
+        //         }
+        //     };
             
 
-        }
+        //}
         void OpenTree()
         {
             TreeNode stifte = new TreeNode("Stifte");

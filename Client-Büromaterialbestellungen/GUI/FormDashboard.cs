@@ -85,17 +85,20 @@ namespace Büromaterialbestellungen.GUI
         {
             var products = svcMain.Products;
 
+            putDataInListView(products.ToList());
+        }
+        public void putDataInListView(List<CclRecProduct> products)
+        {
             foreach (var item in products)
             {
-                var lvi = new ListViewItem(item.ProductName); 
+                var lvi = new ListViewItem(item.ProductName);
                 lvi.SubItems.Add(item.Amount.ToString());
-                lvi.SubItems.Add(item.UserName);         
+                lvi.SubItems.Add(item.UserName);
                 lvi.Tag = item;
                 ucOverviewVorbestellt.ListViewUC.Items.Add(lvi);
-               
             }
         }
-
-       
     }
+
+    
 }
