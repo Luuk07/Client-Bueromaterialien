@@ -15,26 +15,31 @@ namespace Büromaterialbestellungen.GUI
     {
         public int labelCount = 1;
         public event EventHandler added;
+
         public string productName
         {
             get => labelProductName.Text;
             set => labelProductName.Text = value;
         }
 
-        
+        //public CclContProduct Product {get; set;}
 
-        public CclContProduct Product { get
+        public CclContProduct Product
+        {
+            get
             {
                 return new CclContProduct { ProductName = productName, Amount = labelCount };
             }
         }
+
         public UCAddingProduct()
         {
             InitializeComponent();
             labelProductCount.Text = labelCount.ToString();
-           
+            labelCount = 1; 
+            //Product = new CclContProduct { ProductName = productName, Amount = labelCount }; //Besser, da es dann nur ein Product gibt, sonst gäbe es immer neue Instanzen
         }
-
+        
 
         private void buttonAddOne_Click(object sender, EventArgs e)
         {
@@ -54,6 +59,8 @@ namespace Büromaterialbestellungen.GUI
         private void buttonAddToShopingCart_Click(object sender, EventArgs e)
         {
             added?.Invoke(this, EventArgs.Empty);
+            Product.Amount = labelCount;
+            Product.ProductName = productName;
             labelCount = 1;
             labelProductCount.Text = labelCount.ToString();
 

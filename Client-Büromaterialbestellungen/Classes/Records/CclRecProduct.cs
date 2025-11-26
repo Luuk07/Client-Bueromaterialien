@@ -13,7 +13,7 @@ namespace Büromaterialbestellungen.Classes.Records
     //Record for Products
 
     [CDSTable("Products", "DB", "")]
-    public class CclRecProdut : CclCDSRecBase
+    public class CclRecProduct : CclCDSRecBase
     {
         #region Constants
         ///**************************************************
@@ -65,7 +65,7 @@ namespace Büromaterialbestellungen.Classes.Records
         /// <summary>
         /// Standard constructor. Initializes the instance.
         /// </summary>
-        public CclRecProdut() : this(string.Empty, int.MinValue, string.Empty, true, false, false, false) { }
+        public CclRecProduct() : this(string.Empty, int.MinValue, string.Empty, true, false, false, false) { }
 
         ///**************************************************
         /// <summary>
@@ -75,7 +75,7 @@ namespace Büromaterialbestellungen.Classes.Records
         /// <param name="_strDomain">Value for 'ErrorPath'.</param>
         /// <param name="_strPassword">Value for 'ErrorMailSender'.</param>
         /// <param name="_iTimeOut">Value for 'ErrorMailReceiver'.</param>
-        public CclRecProdut(string _strProductName, int _intAmount, string _strUserName, bool _boolIsPreOrdered, bool _boolIsOrdered, bool _boolIsReceived, bool _boolIsDeleted)
+        public CclRecProduct(string _strProductName, int _intAmount, string _strUserName, bool _boolIsPreOrdered, bool _boolIsOrdered, bool _boolIsReceived, bool _boolIsDeleted)
         {
             ProductName = _strProductName;
             Amount = _intAmount;

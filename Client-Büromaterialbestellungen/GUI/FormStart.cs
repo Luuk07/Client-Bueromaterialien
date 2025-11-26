@@ -1,4 +1,5 @@
-﻿using Büromaterialbestellungen.GUI;
+﻿using Büromaterialbestellungen.Classes.Services;
+using Büromaterialbestellungen.GUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ namespace Büromaterialbestellungen
 {
     public partial class FormStart : Form
     {
-        
+
         public FormStart()
         {
             InitializeComponent();
@@ -25,10 +26,10 @@ namespace Büromaterialbestellungen
 
        
 
-        private async void buttonDashboard_Click(object sender, EventArgs e)
+        private void buttonDashboard_Click(object sender, EventArgs e)
         {
             var dashboard = new FormDashboard();
-            await dashboard.getDataFromDB();
+            
 
             //Wenn Owner geschlossen wird, wird auch alles darunter geschlossen
             dashboard.Owner = this;
@@ -41,7 +42,6 @@ namespace Büromaterialbestellungen
 
             this.Hide();
             dashboard.Show();
-
         }
 
         private void buttonProduktbestellung_Click(object sender, EventArgs e)

@@ -30,8 +30,8 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.labelBestellt = new System.Windows.Forms.Label();
             this.labelVorbestellt = new System.Windows.Forms.Label();
+            this.labelBestellt = new System.Windows.Forms.Label();
             this.labelErhalten = new System.Windows.Forms.Label();
             this.ucOverviewErhalten = new Büromaterialbestellungen.GUI.UCOverview();
             this.ucOverviewVorbestellt = new Büromaterialbestellungen.GUI.UCOverview();
@@ -54,23 +54,23 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // labelBestellt
-            // 
-            this.labelBestellt.AutoSize = true;
-            this.labelBestellt.Location = new System.Drawing.Point(34, 85);
-            this.labelBestellt.Name = "labelBestellt";
-            this.labelBestellt.Size = new System.Drawing.Size(83, 25);
-            this.labelBestellt.TabIndex = 10;
-            this.labelBestellt.Text = "Bestellt";
-            // 
             // labelVorbestellt
             // 
             this.labelVorbestellt.AutoSize = true;
-            this.labelVorbestellt.Location = new System.Drawing.Point(441, 85);
+            this.labelVorbestellt.Location = new System.Drawing.Point(34, 85);
             this.labelVorbestellt.Name = "labelVorbestellt";
-            this.labelVorbestellt.Size = new System.Drawing.Size(114, 25);
-            this.labelVorbestellt.TabIndex = 11;
+            this.labelVorbestellt.Size = new System.Drawing.Size(228, 50);
+            this.labelVorbestellt.TabIndex = 10;
             this.labelVorbestellt.Text = "Vorbestellt";
+            // 
+            // labelBestellt
+            // 
+            this.labelBestellt.AutoSize = true;
+            this.labelBestellt.Location = new System.Drawing.Point(441, 85);
+            this.labelBestellt.Name = "labelBestellt";
+            this.labelBestellt.Size = new System.Drawing.Size(166, 50);
+            this.labelBestellt.TabIndex = 11;
+            this.labelBestellt.Text = "Bestellt";
             // 
             // labelErhalten
             // 
@@ -90,14 +90,14 @@
             // 
             // ucOverviewVorbestellt
             // 
-            this.ucOverviewVorbestellt.Location = new System.Drawing.Point(428, 209);
+            this.ucOverviewVorbestellt.Location = new System.Drawing.Point(12, 209);
             this.ucOverviewVorbestellt.Name = "ucOverviewVorbestellt";
             this.ucOverviewVorbestellt.Size = new System.Drawing.Size(417, 549);
             this.ucOverviewVorbestellt.TabIndex = 6;
             // 
             // ucOverviewBestellt
             // 
-            this.ucOverviewBestellt.Location = new System.Drawing.Point(25, 209);
+            this.ucOverviewBestellt.Location = new System.Drawing.Point(446, 209);
             this.ucOverviewBestellt.Name = "ucOverviewBestellt";
             this.ucOverviewBestellt.Size = new System.Drawing.Size(385, 549);
             this.ucOverviewBestellt.TabIndex = 5;
@@ -108,8 +108,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1337, 806);
             this.Controls.Add(this.labelErhalten);
-            this.Controls.Add(this.labelVorbestellt);
             this.Controls.Add(this.labelBestellt);
+            this.Controls.Add(this.labelVorbestellt);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ucOverviewErhalten);
             this.Controls.Add(this.ucOverviewVorbestellt);
@@ -129,8 +129,8 @@
         private UCOverview ucOverviewVorbestellt;
         private UCOverview ucOverviewErhalten;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label labelBestellt;
         private System.Windows.Forms.Label labelVorbestellt;
+        private System.Windows.Forms.Label labelBestellt;
         private System.Windows.Forms.Label labelErhalten;
     }
 }

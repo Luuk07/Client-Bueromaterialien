@@ -41,8 +41,8 @@ namespace Büromaterialbestellungen.GUI
             if (result == DialogResult.No)
                 return;
             CclCDSDatabase db = new CclCDSDatabase(CDSStorageType.MariaDB);
-            CclCDSTable<CclRecProdut> products =
-               new CclCDSTable<CclRecProdut>(db.BaseDB.CreateDataAccess());
+            CclCDSTable<CclRecProduct> products =
+               new CclCDSTable<CclRecProduct>(db.BaseDB.CreateDataAccess());
             products.LoadData();
 
             if (listViewUC.SelectedItems.Count > 0)
@@ -54,7 +54,7 @@ namespace Büromaterialbestellungen.GUI
 
 
 
-                CclRecProdut tagProd = item.Tag as CclRecProdut;
+                CclRecProduct tagProd = item.Tag as CclRecProduct;
                 if (tagProd == null)
                     return;
 

@@ -1,5 +1,6 @@
 ﻿using Büromaterialbestellungen.Classes.Container;
 using Büromaterialbestellungen.Classes.Records;
+using Büromaterialbestellungen.Classes.Services;
 using CDS.Classes;
 using CDS.Enumerations;
 using System;
@@ -18,25 +19,21 @@ namespace Büromaterialbestellungen.GUI
     // Produktbestellung Formular
     public partial class FormProduktbestellung : Form
     {
-        
-        UCAddingProduct addingProduct;
-        //bool blocker = false;
-      
+        CclSvcMain svcMain = new CclSvcMain();
 
         public FormProduktbestellung()
         {
             InitializeComponent();
             OpenTree();
-            addingProduct = new UCAddingProduct();
-            addingProduct.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            addingProduct.Location = new Point(230, 44);
-
+           
+            ucAddingProduct.Location = new Point(230, 44);
+            ucAddingProduct.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
 
             dropDownBoxUserNames.Items.AddRange(new string[] { "Dilshod Akramov", "Ralf Biniasch", "Jens Ceasar", "Heiko Dittrich", "Tjalf Ceasar", "Luuk Pehlgrim" });
             AddToShoppingcart();
 
-            this.Controls.Add(dropDownBoxUserNames);
-            this.Controls.Add(addingProduct);
+            //this.Controls.Add(dropDownBoxUserNames); //Dachte man muss es immer hinzufügen, aber wenn man es im Designer hinzufügt, ist es schon da
+            //this.Controls.Add(ucAddingProduct);
 
             this.MaximizeBox = false;
             this.MaximumSize = this.Size;
@@ -44,25 +41,36 @@ namespace Büromaterialbestellungen.GUI
 
         public void AddToShoppingcart()
         {
-       
-             addingProduct.added += (s, e) =>
+            
+            ucAddingProduct.added += (s, e) =>
              {
-                 if (addingProduct.productName == "Produktname")
+                 if (ucAddingProduct.productName == "Produktname")
                  {
                      MessageBox.Show("Bitte gib ein Produkt an");
                      return;
                  }
 
                  var existingItem = shoppingCart.Items
-                     .Cast<object>()                      
+                     .Cast<CclContProduct>()                      
                      .FirstOrDefault(uc => uc != null &&
-                      uc.ToString().Contains(addingProduct.Product.ProductName));
+                      uc.ToString().Contains(ucAddingProduct.Product.ProductName));
 
                  if (existingItem != null)
                  {
-                     shoppingCart.Items.Remove(existingItem);
+                     //shoppingCart.Items.Remove(existingItem);
+                     existingItem.Amount += ucAddingProduct.Product.Amount; // Jetzt wird die Menge addiert
+
+                    
+                     //UI aktualisieren
+                     int index = shoppingCart.Items.IndexOf(existingItem);
+                     shoppingCart.Items[index] = existingItem; 
+
+
                  }
-                 shoppingCart.Items.Add(addingProduct.Product);
+                 else
+                 {
+                     shoppingCart.Items.Add(ucAddingProduct.Product);
+                 }
              };
             
 
@@ -91,46 +99,10 @@ namespace Büromaterialbestellungen.GUI
                 return;
             }
 
-            TreeNode selectedProduct = e.Node;
-            addingProduct.productName = selectedProduct.Text; 
+            //TreeNode selectedProduct = e.Node; habe ich gemacht, damit ich sehe woher dieses 'e.Node' herkommt
+            ucAddingProduct.productName = e.Node.Text; 
         }
 
-        //private void shoppingCart_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    if (blocker)
-        //    {
-        //        return;
-        //    }
-        //    var selectedProduct = (CclContProduct)shoppingCart.SelectedItem;
-
-        //    if (selectedProduct != null)
-        //    {
-        //        if (selectedProduct.Amount > 1)
-        //        {
-        //            selectedProduct.Amount--;
-
-        //            blocker = true;
-        //            // Index merken
-        //            int index = shoppingCart.SelectedIndex;
-
-        //            // Item neu zuweisen – erzwingt Update
-        //            shoppingCart.Items[index] = selectedProduct;
-
-        //            shoppingCart.ClearSelected();
-
-        //            blocker = false;
-
-
-
-        //        }
-        //        else
-        //        {
-
-        //            shoppingCart.Items.Remove(shoppingCart.SelectedItem);
-
-        //        }
-        //    }
-        //}
 
         private void buttonSend_Click(object sender, EventArgs e)
         {
@@ -148,36 +120,25 @@ namespace Büromaterialbestellungen.GUI
             //WarenKorb in die Datenbank
             try
             {
-            
-                CclCDSDatabase clSvcCDSDatabase = new CclCDSDatabase(CDSStorageType.MariaDB);
-                CclCDSTable<CclRecProdut> clProductListPrivate = new CclCDSTable<CclRecProdut>(clSvcCDSDatabase.BaseDB.CreateDataAccess());
-                CclCDSTable<CclRecOffice> clProductForOfficeList = new CclCDSTable<CclRecOffice>(clSvcCDSDatabase.BaseDB.CreateDataAccess());
-
-
-
                 foreach (CclContProduct item in shoppingCart.Items) { 
 
-                    var recProduct = new CclRecProdut();
+                    var recProduct = new CclRecProduct();
                     recProduct.ProductName = item.ProductName;
                     recProduct.Amount = item.Amount;
                     recProduct.UserName = dropDownBoxUserNames.Text;
                     recProduct.IsPreOrdered = true;
 
-                    var recOffice = new CclRecOffice();
-                    recOffice.ProductName = item.ProductName;
-                    recOffice.Amount = item.Amount;
-                    recOffice.UserName = dropDownBoxUserNames.Text;
-                    recOffice.IsPreOrdered = true;
+                    //var recOffice = new CclRecOffice();
+                    //recOffice.ProductName = item.ProductName;
+                    //recOffice.Amount = item.Amount;
+                    //recOffice.UserName = dropDownBoxUserNames.Text;
+                    //recOffice.IsPreOrdered = true;
 
 
-
-                    clProductListPrivate.AddNewRecord(recProduct);
-                    clProductForOfficeList.AddNewRecord(recOffice);
+                    //svcDB.putDataToDB(recProduct, recOffice);
+                    svcMain.Products.Add(recProduct);
                 }
 
-
-                clProductListPrivate.SaveData();
-                clProductForOfficeList.SaveData();
                 shoppingCart.Items.Clear();
             }
 
@@ -218,11 +179,11 @@ namespace Büromaterialbestellungen.GUI
                     var selectedProduct = (CclContProduct)shoppingCart.Items[index];
                     selectedProduct.Amount--;
                     shoppingCart.Items[index] = shoppingCart.Items[index];
-                    shoppingCart.Refresh();
                     if( selectedProduct.Amount <= 0)
                     {
                         shoppingCart.Items.Remove(shoppingCart.Items[index]);
                     }
+                    shoppingCart.Refresh();
                 }  
             }
         }

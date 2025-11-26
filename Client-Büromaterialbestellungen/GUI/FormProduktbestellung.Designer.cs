@@ -34,6 +34,7 @@
             this.labelShoppingCart = new System.Windows.Forms.Label();
             this.buttonSend = new System.Windows.Forms.Button();
             this.dropDownBoxUserNames = new System.Windows.Forms.ComboBox();
+            this.ucAddingProduct = new Büromaterialbestellungen.GUI.UCAddingProduct();
             this.SuspendLayout();
             // 
             // labelHeader
@@ -90,11 +91,20 @@
             this.dropDownBoxUserNames.Size = new System.Drawing.Size(446, 33);
             this.dropDownBoxUserNames.TabIndex = 6;
             // 
+            // ucAddingProduct
+            // 
+            this.ucAddingProduct.Location = new System.Drawing.Point(464, 122);
+            this.ucAddingProduct.Name = "ucAddingProduct";
+            this.ucAddingProduct.productName = "Produktname";
+            this.ucAddingProduct.Size = new System.Drawing.Size(352, 316);
+            this.ucAddingProduct.TabIndex = 7;
+            // 
             // FormProduktbestellung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1255, 886);
+            this.ClientSize = new System.Drawing.Size(1316, 946);
+            this.Controls.Add(this.ucAddingProduct);
             this.Controls.Add(this.dropDownBoxUserNames);
             this.Controls.Add(this.buttonSend);
             this.Controls.Add(this.labelShoppingCart);
@@ -115,5 +125,6 @@
         private System.Windows.Forms.Label labelShoppingCart;
         private System.Windows.Forms.Button buttonSend;
         private System.Windows.Forms.ComboBox dropDownBoxUserNames;
+        private UCAddingProduct ucAddingProduct;
     }
 }
