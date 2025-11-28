@@ -28,14 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+
+
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.labelVorbestellt = new System.Windows.Forms.Label();
             this.labelBestellt = new System.Windows.Forms.Label();
             this.labelErhalten = new System.Windows.Forms.Label();
-            this.ucOverviewErhalten = new Büromaterialbestellungen.GUI.UCOverview(SvcMain);
-            this.ucOverviewVorbestellt = new Büromaterialbestellungen.GUI.UCOverview(SvcMain);
-            this.ucOverviewBestellt = new Büromaterialbestellungen.GUI.UCOverview(SvcMain);
+            this.ucOverviewErhalten = new Büromaterialbestellungen.GUI.UCOverview();
+            this.ucOverviewVorbestellt = new Büromaterialbestellungen.GUI.UCOverview();
+            this.ucOverviewBestellt = new Büromaterialbestellungen.GUI.UCOverview();
             this.SuspendLayout();
             // 
             // label1
@@ -111,7 +113,7 @@
             this.Controls.Add(this.labelBestellt);
             this.Controls.Add(this.labelVorbestellt);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.ucOverviewErhalten);
+            this.Controls.Add(this.ucOverviewErhalten);       
             this.Controls.Add(this.ucOverviewVorbestellt);
             this.Controls.Add(this.ucOverviewBestellt);
             this.Controls.Add(this.label1);

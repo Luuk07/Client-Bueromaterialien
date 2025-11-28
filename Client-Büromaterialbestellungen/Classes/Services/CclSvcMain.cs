@@ -35,7 +35,14 @@ namespace Büromaterialbestellungen.Classes.Services
         {
             product.Deleted = true;
             _svcDB.putDataToDB(Products.ToList());
-
+        }
+        public void OnReceived(CclRecProduct product)
+        {
+            product.Deleted = false;
+            product.IsReceived = true;
+            product.IsOrdered = false;
+            product.IsPreOrdered = false;
+            _svcDB.putDataToDB(Products.ToList());
         }
 
         public CclContProduct CreateNewProduktForShoppingCart()//string _strName, int _iAmount, string _strUserName)

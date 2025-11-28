@@ -26,15 +26,15 @@ namespace Büromaterialbestellungen.GUI
             get { return listViewUC; }
         }
 
-       
-
-        public UCOverview(CclSvcMain svcMain)
+        public UCOverview()
         {
-            SvcMain = svcMain;
             InitializeComponent();
-
         }
 
+        public void InitUC(CclSvcMain _ClSvcMain)
+        {
+            SvcMain = _ClSvcMain;
+        }
 
         private void mouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -60,7 +60,16 @@ namespace Büromaterialbestellungen.GUI
                     //products.SaveData();
                     listViewUC.Items.Remove(item);
                 }
-        
+                if (prodInTable != null && prodInTable.IsOrdered == true)
+                {
+                    var result = MessageBox.Show("Haben Sie das Produkt erhalten?", "Eintrag zur Erhaltenliste", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.No)
+                        return;
+                    SvcMain.OnReceived(prodInTable);
+                    listViewUC.Items.Remove(item);
+                    listViewUC.Refresh();
+                }
+
             }
         }
     }
