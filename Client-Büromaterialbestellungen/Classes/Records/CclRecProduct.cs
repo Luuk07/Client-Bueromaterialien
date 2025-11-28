@@ -31,7 +31,7 @@ namespace Büromaterialbestellungen.Classes.Records
         private bool I_boolIsPreOrdered;
         private bool I_boolIsOrdered;
         private bool I_boolIsReceived;
-        private bool I_boolIsDeleted;
+        //private bool I_boolIsDeleted;
 
         //private string I_strPassword;
 
@@ -52,7 +52,7 @@ namespace Büromaterialbestellungen.Classes.Records
 
         public bool IsReceived { get { return I_boolIsReceived; } set { SetValue(ref I_boolIsReceived, value); } }
 
-        public bool IsDeleted { get{ return I_boolIsDeleted; } set { SetValue(ref I_boolIsDeleted, value); } }
+        //public bool IsDeleted { get{ return I_boolIsDeleted; } set { SetValue(ref I_boolIsDeleted, value); } }
 
 
 
@@ -65,7 +65,7 @@ namespace Büromaterialbestellungen.Classes.Records
         /// <summary>
         /// Standard constructor. Initializes the instance.
         /// </summary>
-        public CclRecProduct() : this(string.Empty, int.MinValue, string.Empty, true, false, false, false) { }
+        public CclRecProduct() : this(string.Empty, int.MinValue, string.Empty, true, false, false) { }
 
         ///**************************************************
         /// <summary>
@@ -75,7 +75,7 @@ namespace Büromaterialbestellungen.Classes.Records
         /// <param name="_strDomain">Value for 'ErrorPath'.</param>
         /// <param name="_strPassword">Value for 'ErrorMailSender'.</param>
         /// <param name="_iTimeOut">Value for 'ErrorMailReceiver'.</param>
-        public CclRecProduct(string _strProductName, int _intAmount, string _strUserName, bool _boolIsPreOrdered, bool _boolIsOrdered, bool _boolIsReceived, bool _boolIsDeleted)
+        public CclRecProduct(string _strProductName, int _intAmount, string _strUserName, bool _boolIsPreOrdered, bool _boolIsOrdered, bool _boolIsReceived)
         {
             ProductName = _strProductName;
             Amount = _intAmount;
@@ -84,7 +84,7 @@ namespace Büromaterialbestellungen.Classes.Records
             IsPreOrdered = _boolIsPreOrdered;
             IsOrdered = _boolIsOrdered;
             IsReceived = _boolIsReceived;
-            IsDeleted = _boolIsDeleted;
+            //IsDeleted = _boolIsDeleted;
         }
 
         #endregion Initialization

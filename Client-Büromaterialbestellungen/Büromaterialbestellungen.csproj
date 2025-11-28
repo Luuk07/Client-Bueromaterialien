@@ -118,10 +118,9 @@
     <Compile Include="Classes\Container\CclContProduct.cs" />
     <Compile Include="Classes\Container\CclContShoppingCart.cs" />
     <Compile Include="Classes\Container\CclContUser.cs" />
-    <Compile Include="Classes\Records\CclRecOffice.cs" />
     <Compile Include="Classes\Records\CclRecProduct.cs" />
     <Compile Include="Classes\Records\CclRecTest.cs" />
-    <Compile Include="Classes\Services\CclSvcDB.cs" />
+    <Compile Include="Classes\Services\CclSvcDataStorage.cs" />
     <Compile Include="Classes\Services\CclSvcMain.cs" />
     <Compile Include="Classes\Services\CclSvcTest.cs" />
     <Compile Include="GUI\FormDashboard.cs">

@@ -40,7 +40,6 @@ namespace Büromaterialbestellungen.GUI
             this.MaximizeBox = false;
             this.MaximumSize = this.Size;
         }
-
         //public void AddToShoppingcart()
         //{
             
@@ -73,9 +72,7 @@ namespace Büromaterialbestellungen.GUI
         //         {
         //             shoppingCart.Items.Add(ucAddingProduct.Product);
         //         }
-        //     };
-            
-
+        //     }; 
         //}
         void OpenTree()
         {
@@ -90,7 +87,6 @@ namespace Büromaterialbestellungen.GUI
             mappen.Nodes.Add("Rote Mappe");
             mappen.Nodes.Add("Grüne Mappe");
         }
-
         private void productTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
             //Wenn ein Knotenpunkt ausgewählt wird, wird es nicht übernommen
@@ -104,8 +100,6 @@ namespace Büromaterialbestellungen.GUI
             //TreeNode selectedProduct = e.Node; habe ich gemacht, damit ich sehe woher dieses 'e.Node' herkommt
             ucAddingProduct.productName = e.Node.Text; 
         }
-
-
         private void buttonSend_Click(object sender, EventArgs e)
         {
             if(dropDownBoxUserNames.Text.Length == 0)
@@ -118,7 +112,6 @@ namespace Büromaterialbestellungen.GUI
                 MessageBox.Show("Bitte füge ein Produkt hinzu");
                 return;
             }
-
             //WarenKorb in die Datenbank
             try
             {

@@ -89,13 +89,41 @@ namespace Büromaterialbestellungen.GUI
         }
         public void putDataInListView(List<CclRecProduct> products)
         {
+            
             foreach (var item in products)
             {
-                var lvi = new ListViewItem(item.ProductName);
-                lvi.SubItems.Add(item.Amount.ToString());
-                lvi.SubItems.Add(item.UserName);
-                lvi.Tag = item;
-                ucOverviewVorbestellt.ListViewUC.Items.Add(lvi);
+                if (item.IsReceived)
+                {
+                    var lvi = new ListViewItem(item.ProductName);
+                    lvi.SubItems.Add(item.Amount.ToString());
+                    lvi.SubItems.Add(item.UserName);
+                    lvi.Tag = item;
+                    ucOverviewErhalten.ListViewUC.Items.Add(lvi);
+                    continue;
+                }
+                else if (item.IsOrdered)
+                {
+                    var lvi = new ListViewItem(item.ProductName);
+                    lvi.SubItems.Add(item.Amount.ToString());
+                    lvi.SubItems.Add(item.UserName);
+                    lvi.Tag = item;
+                    ucOverviewBestellt.ListViewUC.Items.Add(lvi);
+                    continue;
+                }
+                else if(item.IsPreOrdered)
+                {
+                    var lvi = new ListViewItem(item.ProductName);
+                    lvi.SubItems.Add(item.Amount.ToString());
+                    lvi.SubItems.Add(item.UserName);
+                    lvi.Tag = item;
+                    ucOverviewVorbestellt.ListViewUC.Items.Add(lvi);
+                    continue;
+                }
+                //var lvi = new ListViewItem(item.ProductName);
+                //lvi.SubItems.Add(item.Amount.ToString());
+                //lvi.SubItems.Add(item.UserName);
+                //lvi.Tag = item;
+                //ucOverviewVorbestellt.ListViewUC.Items.Add(lvi);
             }
         }
     }

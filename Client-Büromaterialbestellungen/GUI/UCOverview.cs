@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Büromaterialbestellungen.Classes.Services;
 using System.Windows.Forms;
 
 
@@ -18,8 +19,8 @@ namespace Büromaterialbestellungen.GUI
 {
     public partial class UCOverview : UserControl
     {
+        public CclSvcMain svcMain = new CclSvcMain();
 
-        
         public ListView ListViewUC
         {
             get { return listViewUC; }
@@ -40,10 +41,7 @@ namespace Büromaterialbestellungen.GUI
             var result = MessageBox.Show("Möchten Sie diesen Eintrag wirklich löschen?", "Eintrag löschen", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.No)
                 return;
-            CclCDSDatabase db = new CclCDSDatabase(CDSStorageType.MariaDB);
-            CclCDSTable<CclRecProduct> products =
-               new CclCDSTable<CclRecProduct>(db.BaseDB.CreateDataAccess());
-            products.LoadData();
+           var products = svcMain.Products;
 
             if (listViewUC.SelectedItems.Count > 0)
             {
@@ -63,7 +61,7 @@ namespace Büromaterialbestellungen.GUI
                 if (prodInTable != null && prodInTable.IsPreOrdered == true)
                 {
                     prodInTable.Deleted = true;
-                    products.SaveData();
+                    //products.SaveData();
                     listViewUC.Items.Remove(item);
                 }
         

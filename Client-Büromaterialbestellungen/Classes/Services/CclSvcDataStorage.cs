@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace Büromaterialbestellungen.Classes.Services
 {
-    public class CclSvcDB
+    public class CclSvcDataStorage
     {
         private CclCDSDatabase clCDSDatabase;
         private CclCDSTable<CclRecProduct> clProductList;
-        public CclSvcDB()
+        public CclSvcDataStorage()
         {
             clCDSDatabase = new CclCDSDatabase(CDSStorageType.MariaDB);
             clProductList = new CclCDSTable<CclRecProduct>(clCDSDatabase.BaseDB.CreateDataAccess());
@@ -29,7 +29,6 @@ namespace Büromaterialbestellungen.Classes.Services
 
         public void putDataToDB(List<CclRecProduct> _liRecProducts)
         {
-            // Hier könnte Code stehen, um Daten in die Datenbank zu schreiben
             try
             {
                 clProductList.Clear();

@@ -24,8 +24,6 @@ namespace Büromaterialbestellungen
            
         }
 
-       
-
         private void buttonDashboard_Click(object sender, EventArgs e)
         {
             var dashboard = new FormDashboard();
@@ -60,11 +58,6 @@ namespace Büromaterialbestellungen
             this.Hide(); 
             produktbestellung.Show(); 
         }
-
-        
-
-
-
     }
 
     

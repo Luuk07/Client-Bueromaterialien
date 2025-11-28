@@ -1,4 +1,5 @@
 ﻿using Büromaterialbestellungen.Classes.Container;
+using Büromaterialbestellungen.Classes.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,8 @@ namespace Büromaterialbestellungen.GUI
     {
         public int labelCount = 1;
         public event EventHandler added;
-        
+        public CclSvcMain svcMain = new CclSvcMain();
+
         //FormProduktbestellung formProduktbestellung = new FormProduktbestellung();
 
         public string productName
@@ -24,15 +26,17 @@ namespace Büromaterialbestellungen.GUI
             set => labelProductName.Text = value;
         }
 
-        //public CclContProduct Product {get; set;}
+       
 
-        public CclContProduct Product
-        {
-            get
-            {
-                return new CclContProduct { ProductName = productName, Amount = labelCount };
-            }
-        }
+        public CclContProduct Product { get; set; }
+
+        //public CclContProduct Product
+        //{
+        //    get
+        //    {
+        //        return new CclContProduct { ProductName = productName, Amount = labelCount };
+        //    }
+        //}
 
         public UCAddingProduct()
         {
@@ -40,7 +44,7 @@ namespace Büromaterialbestellungen.GUI
             //AddToShoppingcart();
             labelProductCount.Text = labelCount.ToString();
             labelCount = 1; 
-            //Product = new CclContProduct { ProductName = productName, Amount = labelCount }; //Besser, da es dann nur ein Product gibt, sonst gäbe es immer neue Instanzen
+            Product = svcMain.CreateNewProduktForShoppingCart(); //Besser, da es dann nur ein Product gibt, sonst gäbe es immer neue Instanzen
         }
         
 
@@ -61,9 +65,9 @@ namespace Büromaterialbestellungen.GUI
 
         private void buttonAddToShopingCart_Click(object sender, EventArgs e)
         {
-            added?.Invoke(this, EventArgs.Empty);
             Product.Amount = labelCount;
             Product.ProductName = productName;
+            added?.Invoke(this, EventArgs.Empty);
             labelCount = 1;
             labelProductCount.Text = labelCount.ToString();
 
@@ -88,18 +92,15 @@ namespace Büromaterialbestellungen.GUI
                 {
                     //shoppingCart.Items.Remove(existingItem);
                     existingItem.Amount += Product.Amount; // Jetzt wird die Menge addiert
-
-
                     //UI aktualisieren
                     int index = formProduktbestellung.shoppingCart.Items.IndexOf(existingItem);
                     formProduktbestellung.shoppingCart.Items[index] = existingItem;
-
-
                 }
                 else
                 {
                     formProduktbestellung.shoppingCart.Items.Add(Product);
                 }
+                Product = svcMain.CreateNewProduktForShoppingCart();
             };
         }
 
