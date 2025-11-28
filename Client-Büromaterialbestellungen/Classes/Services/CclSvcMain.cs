@@ -31,6 +31,13 @@ namespace Büromaterialbestellungen.Classes.Services
             _svcDB.putDataToDB(Products.ToList());
         }
 
+        public void OnDeleted(CclRecProduct product)
+        {
+            product.Deleted = true;
+            _svcDB.putDataToDB(Products.ToList());
+
+        }
+
         public CclContProduct CreateNewProduktForShoppingCart()//string _strName, int _iAmount, string _strUserName)
         {
             CclContProduct clNew = new CclContProduct(); //{ ProductName = _strName, Amount = _iAmount, UserName = _strUserName };
@@ -39,6 +46,8 @@ namespace Büromaterialbestellungen.Classes.Services
 
             return clNew;  // Du kannst auch eine void-Methode nehmen. Dann fällt diese Rückgabe weg. Kommt darauf an, ob du das neue Produkt auf der aufrufenden Seite noch verwendest.
         }
+
+        
 
 
     }

@@ -18,46 +18,47 @@ namespace Büromaterialbestellungen.GUI
     {
         //Overview Bestellt, Vorbestellt, Erhalten
 
-        public CclSvcMain svcMain = new CclSvcMain();
+        public CclSvcMain SvcMain;
 
         
-        public FormDashboard()
+        public FormDashboard(CclSvcMain svcMain)
         {
+            SvcMain = svcMain;
             InitializeComponent();
             InitListView(ucOverviewBestellt.ListViewUC);
             InitListView(ucOverviewVorbestellt.ListViewUC);
             InitListView(ucOverviewErhalten.ListViewUC);
 
 
-           // ucOverviewBestellt.ListViewUC.View = View.Details;
-           // ucOverviewBestellt.ListViewUC.FullRowSelect = true;
-           // ucOverviewBestellt.ListViewUC.GridLines = true;
+            // ucOverviewBestellt.ListViewUC.View = View.Details;
+            // ucOverviewBestellt.ListViewUC.FullRowSelect = true;
+            // ucOverviewBestellt.ListViewUC.GridLines = true;
 
-           // //ucOverviewBestellt.ListViewUC.Columns.Add("ProdID");
-           // ucOverviewBestellt.ListViewUC.Columns.Add("Produktname");
-           // ucOverviewBestellt.ListViewUC.Columns.Add("Menge");
-           // ucOverviewBestellt.ListViewUC.Columns.Add("Benutzername");
-
-
-
-           // ucOverviewVorbestellt.ListViewUC.View = View.Details;
-           // ucOverviewVorbestellt.ListViewUC.FullRowSelect = true;
-           // ucOverviewVorbestellt.ListViewUC.GridLines = true;
-
-           ////ucOverviewVorbestellt.ListViewUC.Columns.Add("ProdID");
-           // ucOverviewVorbestellt.ListViewUC.Columns.Add("Produktname");
-           // ucOverviewVorbestellt.ListViewUC.Columns.Add("Menge");
-           // ucOverviewVorbestellt.ListViewUC.Columns.Add("Benutzername");
+            // //ucOverviewBestellt.ListViewUC.Columns.Add("ProdID");
+            // ucOverviewBestellt.ListViewUC.Columns.Add("Produktname");
+            // ucOverviewBestellt.ListViewUC.Columns.Add("Menge");
+            // ucOverviewBestellt.ListViewUC.Columns.Add("Benutzername");
 
 
-           // ucOverviewErhalten.ListViewUC.View = View.Details;
-           // ucOverviewErhalten.ListViewUC.FullRowSelect = true;
-           // ucOverviewErhalten.ListViewUC.GridLines = true;
 
-           // //ucOverviewErhalten.ListViewUC.Columns.Add("ProdID");
-           // ucOverviewErhalten.ListViewUC.Columns.Add("Produktname");
-           // ucOverviewErhalten.ListViewUC.Columns.Add("Menge");
-           // ucOverviewErhalten.ListViewUC.Columns.Add("Benutzername");
+            // ucOverviewVorbestellt.ListViewUC.View = View.Details;
+            // ucOverviewVorbestellt.ListViewUC.FullRowSelect = true;
+            // ucOverviewVorbestellt.ListViewUC.GridLines = true;
+
+            ////ucOverviewVorbestellt.ListViewUC.Columns.Add("ProdID");
+            // ucOverviewVorbestellt.ListViewUC.Columns.Add("Produktname");
+            // ucOverviewVorbestellt.ListViewUC.Columns.Add("Menge");
+            // ucOverviewVorbestellt.ListViewUC.Columns.Add("Benutzername");
+
+
+            // ucOverviewErhalten.ListViewUC.View = View.Details;
+            // ucOverviewErhalten.ListViewUC.FullRowSelect = true;
+            // ucOverviewErhalten.ListViewUC.GridLines = true;
+
+            // //ucOverviewErhalten.ListViewUC.Columns.Add("ProdID");
+            // ucOverviewErhalten.ListViewUC.Columns.Add("Produktname");
+            // ucOverviewErhalten.ListViewUC.Columns.Add("Menge");
+            // ucOverviewErhalten.ListViewUC.Columns.Add("Benutzername");
 
             //Maximum window size 
             this.MaximizeBox = false;
@@ -83,7 +84,7 @@ namespace Büromaterialbestellungen.GUI
         //Get Data from Database and show it in the ListView
         public void showDataFromProductsList()
         {
-            var products = svcMain.Products;
+            var products = SvcMain.Products.Where(prod => !prod.Deleted);
 
             putDataInListView(products.ToList());
         }

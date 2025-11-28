@@ -14,11 +14,12 @@ namespace Büromaterialbestellungen
 {
     public partial class FormStart : Form
     {
-
+        CclSvcMain SvcMain;
         public FormStart()
         {
             InitializeComponent();
-           
+            SvcMain = new CclSvcMain();
+
             this.MaximizeBox = false;
             this.MaximumSize = this.Size;
            
@@ -26,7 +27,7 @@ namespace Büromaterialbestellungen
 
         private void buttonDashboard_Click(object sender, EventArgs e)
         {
-            var dashboard = new FormDashboard();
+            var dashboard = new FormDashboard(SvcMain);
             
 
             //Wenn Owner geschlossen wird, wird auch alles darunter geschlossen
@@ -44,7 +45,7 @@ namespace Büromaterialbestellungen
 
         private void buttonProduktbestellung_Click(object sender, EventArgs e)
         {
-            var produktbestellung = new FormProduktbestellung();
+            var produktbestellung = new FormProduktbestellung(SvcMain);
 
             // Wie oben 
             produktbestellung.Owner = this;

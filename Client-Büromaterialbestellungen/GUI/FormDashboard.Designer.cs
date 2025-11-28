@@ -33,9 +33,9 @@
             this.labelVorbestellt = new System.Windows.Forms.Label();
             this.labelBestellt = new System.Windows.Forms.Label();
             this.labelErhalten = new System.Windows.Forms.Label();
-            this.ucOverviewErhalten = new Büromaterialbestellungen.GUI.UCOverview();
-            this.ucOverviewVorbestellt = new Büromaterialbestellungen.GUI.UCOverview();
-            this.ucOverviewBestellt = new Büromaterialbestellungen.GUI.UCOverview();
+            this.ucOverviewErhalten = new Büromaterialbestellungen.GUI.UCOverview(SvcMain);
+            this.ucOverviewVorbestellt = new Büromaterialbestellungen.GUI.UCOverview(SvcMain);
+            this.ucOverviewBestellt = new Büromaterialbestellungen.GUI.UCOverview(SvcMain);
             this.SuspendLayout();
             // 
             // label1

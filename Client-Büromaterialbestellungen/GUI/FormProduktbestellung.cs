@@ -19,9 +19,9 @@ namespace Büromaterialbestellungen.GUI
     // Produktbestellung Formular
     public partial class FormProduktbestellung : Form
     {
-        CclSvcMain svcMain = new CclSvcMain();
+        CclSvcMain SvcMain;
 
-        public FormProduktbestellung()
+        public FormProduktbestellung(CclSvcMain svcMain)
         {
             InitializeComponent();
             OpenTree();
@@ -32,6 +32,7 @@ namespace Büromaterialbestellungen.GUI
 
             dropDownBoxUserNames.Items.AddRange(new string[] { "Dilshod Akramov", "Ralf Biniasch", "Jens Ceasar", "Heiko Dittrich", "Tjalf Ceasar", "Luuk Pehlgrim" });
 
+            SvcMain = svcMain;
             //AddToShoppingcart();
 
             //this.Controls.Add(dropDownBoxUserNames); //Dachte man muss es immer hinzufügen, aber wenn man es im Designer hinzufügt, ist es schon da
@@ -131,7 +132,7 @@ namespace Büromaterialbestellungen.GUI
 
 
                     //svcDB.putDataToDB(recProduct, recOffice);
-                    svcMain.Products.Add(recProduct);
+                    SvcMain.Products.Add(recProduct);
                 }
 
                 shoppingCart.Items.Clear();

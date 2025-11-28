@@ -19,7 +19,7 @@ namespace Büromaterialbestellungen.GUI
 {
     public partial class UCOverview : UserControl
     {
-        public CclSvcMain svcMain = new CclSvcMain();
+        public CclSvcMain SvcMain;
 
         public ListView ListViewUC
         {
@@ -28,39 +28,35 @@ namespace Büromaterialbestellungen.GUI
 
        
 
-        public UCOverview()
+        public UCOverview(CclSvcMain svcMain)
         {
+            SvcMain = svcMain;
             InitializeComponent();
-            
+
         }
 
- 
 
         private void mouseDoubleClick(object sender, MouseEventArgs e)
         {
-            var result = MessageBox.Show("Möchten Sie diesen Eintrag wirklich löschen?", "Eintrag löschen", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.No)
-                return;
-           var products = svcMain.Products;
-
+            
             if (listViewUC.SelectedItems.Count > 0)
             {
-
+                var products = SvcMain.Products;
                 var item = listViewUC.SelectedItems[0];
 
                 string listViewID = item.SubItems[0].Text;
 
-
-
                 CclRecProduct tagProd = item.Tag as CclRecProduct;
                 if (tagProd == null)
                     return;
-
                 var prodInTable = products.FirstOrDefault(p => p.ID == tagProd.ID);
-
                 if (prodInTable != null && prodInTable.IsPreOrdered == true)
-                {
-                    prodInTable.Deleted = true;
+                { 
+                    var result = MessageBox.Show("Möchten Sie diesen Eintrag wirklich löschen?", "Eintrag löschen", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.No)
+                        return;
+                    SvcMain.OnDeleted(prodInTable);
+                    //products.Remove(prodInTable);
                     //products.SaveData();
                     listViewUC.Items.Remove(item);
                 }
