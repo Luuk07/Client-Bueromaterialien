@@ -12,21 +12,22 @@ namespace Büromaterialbestellungen.Classes.Records
 
     //Record for Products
 
-    [CDSTable("Products", "DB", "")]
-    public class CclRecProduct : CclCDSRecBase
+    [CDSTable("product", "DB", "")]
+    public class CclRecProductOrder : CclCDSRecBase
     {
         #region Constants
         ///**************************************************
         /// Constants
-        private const string I_strCryptoKey = "e950tu dfb-<y.dx epotz sölrdjt a94et dflkgd";
+      
 
         #endregion Constants
 
         #region Instance variables
         ///**************************************************
         /// Instance variables
-        private string I_strProductName;
         private int I_intAmount;
+        private int I_intProductID;
+        private string I_intProductName;
         private string I_strUserName;
         private bool I_boolIsPreOrdered;
         private bool I_boolIsOrdered;
@@ -40,10 +41,12 @@ namespace Büromaterialbestellungen.Classes.Records
         #region Properties
         ///**************************************************
         /// Properties
-        [CDSField(0, 0, true, false, false, true)] public int ID { get; set; }
-
-        public string ProductName { get { return I_strProductName; } set { SetValue(ref I_strProductName, value); } }
+        [CDSField(0, 0, true, true, false, true)]
+        public int OrderID { get; set; }
+        public int ProductID { get { return I_intProductID; } set { SetValue(ref I_intProductID, value); } }
+        public string ProductName { get { return I_intProductName; } set { SetValue(ref I_intProductName, value); } }
         public int Amount { get { return I_intAmount; } set { SetValue(ref I_intAmount, value); } }
+
         public string UserName { get { return I_strUserName; } set { SetValue(ref I_strUserName, value); } }
 
         public bool IsPreOrdered { get { return I_boolIsPreOrdered; } set { SetValue(ref I_boolIsPreOrdered, value); } }
@@ -52,11 +55,9 @@ namespace Büromaterialbestellungen.Classes.Records
 
         public bool IsReceived { get { return I_boolIsReceived; } set { SetValue(ref I_boolIsReceived, value); } }
 
-        //public bool IsDeleted { get{ return I_boolIsDeleted; } set { SetValue(ref I_boolIsDeleted, value); } }
+      
 
 
-
-       
 
         #endregion Properties
 
@@ -65,7 +66,7 @@ namespace Büromaterialbestellungen.Classes.Records
         /// <summary>
         /// Standard constructor. Initializes the instance.
         /// </summary>
-        public CclRecProduct() : this(string.Empty, int.MinValue, string.Empty, true, false, false) { }
+        public CclRecProductOrder() : this(int.MinValue, int.MinValue, string.Empty, int.MinValue, string.Empty, true, false, false) { }
 
         ///**************************************************
         /// <summary>
@@ -75,8 +76,10 @@ namespace Büromaterialbestellungen.Classes.Records
         /// <param name="_strDomain">Value for 'ErrorPath'.</param>
         /// <param name="_strPassword">Value for 'ErrorMailSender'.</param>
         /// <param name="_iTimeOut">Value for 'ErrorMailReceiver'.</param>
-        public CclRecProduct(string _strProductName, int _intAmount, string _strUserName, bool _boolIsPreOrdered, bool _boolIsOrdered, bool _boolIsReceived)
+        public CclRecProductOrder(int _intOrderID,int _intProductID, string _strProductName, int _intAmount, string _strUserName, bool _boolIsPreOrdered, bool _boolIsOrdered, bool _boolIsReceived)
         {
+            OrderID = _intOrderID;
+            ProductID = _intProductID;
             ProductName = _strProductName;
             Amount = _intAmount;
             //Password = _strPassword;

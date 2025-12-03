@@ -28,7 +28,7 @@ namespace Büromaterialbestellungen.GUI
 
        
 
-        public CclContProduct Product { get; set; }
+        public CclContProductOrder Product { get; set; }
 
         //public CclContProduct Product
         //{
@@ -65,43 +65,46 @@ namespace Büromaterialbestellungen.GUI
 
         private void buttonAddToShopingCart_Click(object sender, EventArgs e)
         {
-            Product.Amount = labelCount;
-            Product.ProductName = productName;
+            Product.RecProductOrder.Amount = labelCount;
+            Product.RecProductData.ProductName = productName;
+            Product.RecProductData.ProductID = svcMain.GetProductIDByName(productName);
+            Product.RecProductData.KategorieID = svcMain.GetKategorieIDByName(productName);
             added?.Invoke(this, EventArgs.Empty);
             labelCount = 1;
             labelProductCount.Text = labelCount.ToString();
-
+            //svcMain.AddProductToShoppingCart(Product);
         }
 
         public void AddToShoppingcart(FormProduktbestellung formProduktbestellung)
         {
-            added += (s, e) =>
-            {
-                if (productName == "Produktname")
+                added += (s, e) =>
                 {
-                    MessageBox.Show("Bitte gib ein Produkt an");
-                    return;
-                }
+                    if (productName == "Produktname")
+                    {
+                        MessageBox.Show("Bitte gib ein Produkt an");
+                        return;
+                    }
 
-                var existingItem = formProduktbestellung.shoppingCart.Items
-                    .Cast<CclContProduct>()
-                    .FirstOrDefault(uc => uc != null &&
-                     uc.ToString().Contains(Product.ProductName));
+                    var existingItem = formProduktbestellung.shoppingCart.Items
+                        .Cast<CclContProductOrder>()
+                        .FirstOrDefault(uc => uc != null &&
+                         uc.ToString().Contains(Product.RecProductData.ProductName));
 
-                if (existingItem != null)
-                {
-                    //shoppingCart.Items.Remove(existingItem);
-                    existingItem.Amount += Product.Amount; // Jetzt wird die Menge addiert
-                    //UI aktualisieren
-                    int index = formProduktbestellung.shoppingCart.Items.IndexOf(existingItem);
-                    formProduktbestellung.shoppingCart.Items[index] = existingItem;
-                }
-                else
-                {
-                    formProduktbestellung.shoppingCart.Items.Add(Product);
-                }
-                Product = svcMain.CreateNewProduktForShoppingCart();
-            };
+                    if (existingItem != null)
+                    {
+                        //shoppingCart.Items.Remove(existingItem);
+                        existingItem.RecProductOrder.Amount += Product.RecProductOrder.Amount; // Jetzt wird die Menge addiert
+                        //UI aktualisieren
+                        int index = formProduktbestellung.shoppingCart.Items.IndexOf(existingItem);
+                        formProduktbestellung.shoppingCart.Items[index] = existingItem;
+                    }
+                    else
+                    {
+                        formProduktbestellung.shoppingCart.Items.Add(Product);
+                    }
+                    Product = svcMain.CreateNewProduktForShoppingCart();
+                };
+            
         }
 
 

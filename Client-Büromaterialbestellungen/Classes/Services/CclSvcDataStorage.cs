@@ -14,20 +14,28 @@ namespace Büromaterialbestellungen.Classes.Services
     public class CclSvcDataStorage
     {
         private CclCDSDatabase clCDSDatabase;
-        private CclCDSTable<CclRecProduct> clProductList;
+        private CclCDSTable<CclRecProductOrder> clProductList;
+        CclCDSTable<CclRecProductData> clProductDataList;
         public CclSvcDataStorage()
         {
             clCDSDatabase = new CclCDSDatabase(CDSStorageType.MariaDB);
-            clProductList = new CclCDSTable<CclRecProduct>(clCDSDatabase.BaseDB.CreateDataAccess());
+            clProductList = new CclCDSTable<CclRecProductOrder>(clCDSDatabase.BaseDB.CreateDataAccess());
+            clProductDataList = new CclCDSTable<CclRecProductData>(clCDSDatabase.BaseDB.CreateDataAccess());
         }
-        public CclCDSTable<CclRecProduct> getDataFromDB()
+        public CclCDSTable<CclRecProductOrder> getProductsFromDB()
         {
             // Daten laden
             clProductList.LoadData();
             return clProductList;
         }
 
-        public void putDataToDB(List<CclRecProduct> _liRecProducts)
+        public CclCDSTable<CclRecProductData> getProducstDataFromDB()
+        {
+            clProductDataList.LoadData();
+            return clProductDataList;
+        }
+
+        public void putDataToDB(List<CclRecProductOrder> _liRecProducts)
         {
             try
             {

@@ -1,4 +1,5 @@
-﻿using Büromaterialbestellungen.Classes.Records;
+﻿using Büromaterialbestellungen.Classes.Container;
+using Büromaterialbestellungen.Classes.Records;
 using Büromaterialbestellungen.Classes.Services;
 using CDS.Classes;
 using CDS.Enumerations;
@@ -61,7 +62,7 @@ namespace Büromaterialbestellungen.GUI
 
             putDataInListView(products.ToList());
         }
-        public void putDataInListView(List<CclRecProduct> products)
+        public void putDataInListView(List<CclRecProductOrder> products)
         {
             
             foreach (var item in products)
@@ -93,11 +94,7 @@ namespace Büromaterialbestellungen.GUI
                     ucOverviewVorbestellt.ListViewUC.Items.Add(lvi);
                     continue;
                 }
-                //var lvi = new ListViewItem(item.ProductName);
-                //lvi.SubItems.Add(item.Amount.ToString());
-                //lvi.SubItems.Add(item.UserName);
-                //lvi.Tag = item;
-                //ucOverviewVorbestellt.ListViewUC.Items.Add(lvi);
+               
             }
         }
     }

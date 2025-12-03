@@ -46,10 +46,10 @@ namespace Büromaterialbestellungen.GUI
 
                 string listViewID = item.SubItems[0].Text;
 
-                CclRecProduct tagProd = item.Tag as CclRecProduct;
+                CclRecProductOrder tagProd = item.Tag as CclRecProductOrder;
                 if (tagProd == null)
                     return;
-                var prodInTable = products.FirstOrDefault(p => p.ID == tagProd.ID);
+                var prodInTable = products.FirstOrDefault(p => p.OrderID == tagProd.OrderID);
                 if (prodInTable != null && prodInTable.IsPreOrdered == true)
                 { 
                     var result = MessageBox.Show("Möchten Sie diesen Eintrag wirklich löschen?", "Eintrag löschen", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

@@ -24,70 +24,50 @@ namespace Büromaterialbestellungen.GUI
         public FormProduktbestellung(CclSvcMain svcMain)
         {
             InitializeComponent();
+            SvcMain = svcMain;
             OpenTree();
            
             ucAddingProduct.Location = new Point(230, 44);
             ucAddingProduct.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
             ucAddingProduct.AddToShoppingcart(this);
+           
 
             dropDownBoxUserNames.Items.AddRange(new string[] { "Dilshod Akramov", "Ralf Biniasch", "Jens Ceasar", "Heiko Dittrich", "Tjalf Ceasar", "Luuk Pehlgrim" });
 
-            SvcMain = svcMain;
-            //AddToShoppingcart();
-
-            //this.Controls.Add(dropDownBoxUserNames); //Dachte man muss es immer hinzufügen, aber wenn man es im Designer hinzufügt, ist es schon da
-            //this.Controls.Add(ucAddingProduct);
+            
 
             this.MaximizeBox = false;
             this.MaximumSize = this.Size;
         }
-        //public void AddToShoppingcart()
-        //{
-            
-        //    ucAddingProduct.added += (s, e) =>
-        //     {
-        //         if (ucAddingProduct.productName == "Produktname")
-        //         {
-        //             MessageBox.Show("Bitte gib ein Produkt an");
-        //             return;
-        //         }
-
-        //         var existingItem = shoppingCart.Items
-        //             .Cast<CclContProduct>()                      
-        //             .FirstOrDefault(uc => uc != null &&
-        //              uc.ToString().Contains(ucAddingProduct.Product.ProductName));
-
-        //         if (existingItem != null)
-        //         {
-        //             //shoppingCart.Items.Remove(existingItem);
-        //             existingItem.Amount += ucAddingProduct.Product.Amount; // Jetzt wird die Menge addiert
-
-                    
-        //             //UI aktualisieren
-        //             int index = shoppingCart.Items.IndexOf(existingItem);
-        //             shoppingCart.Items[index] = existingItem; 
-
-
-        //         }
-        //         else
-        //         {
-        //             shoppingCart.Items.Add(ucAddingProduct.Product);
-        //         }
-        //     }; 
-        //}
+        
         void OpenTree()
         {
-            TreeNode stifte = new TreeNode("Stifte");
-            TreeNode mappen = new TreeNode("Mappen");
-            productTree.Nodes.Add(stifte);
-            productTree.Nodes.Add(mappen);
-            stifte.Nodes.Add("Bleistift");
-            stifte.Nodes.Add("Kugelschreiber");
-            stifte.Nodes.Add("Füller");
-            mappen.Nodes.Add("Blaue Mappe");
-            mappen.Nodes.Add("Rote Mappe");
-            mappen.Nodes.Add("Grüne Mappe");
+            productTree.Nodes.Clear();
+
+            var allConnectionPoints = SvcMain.ProductData.Where(p => p.KategorieID == 0 && p.IsConnectionPoint);
+
+            foreach (var root in allConnectionPoints)
+            {
+                TreeNode parentNood = new TreeNode(root.ProductName);
+                parentNood.Tag = root.ProductID;
+                productTree.Nodes.Add(parentNood);
+               
+
+                AddChildren(parentNood, root.ProductID);    
+            }
         }
+
+        public void AddChildren(TreeNode parenNode, int parentProductID )
+        {
+            var childs = SvcMain.ProductData.Where(p => p.KategorieID == parentProductID);
+            foreach (var child in childs)
+            {
+                TreeNode childNode = new TreeNode(child.ProductName);
+                childNode.Tag = child.ProductID;
+                parenNode.Nodes.Add(childNode);
+            }
+        }
+        
         private void productTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
             //Wenn ein Knotenpunkt ausgewählt wird, wird es nicht übernommen
@@ -116,23 +96,20 @@ namespace Büromaterialbestellungen.GUI
             //WarenKorb in die Datenbank
             try
             {
-                foreach (CclContProduct item in shoppingCart.Items) { 
+                foreach (CclContProductOrder item in shoppingCart.Items) { 
 
-                    var recProduct = new CclRecProduct();
-                    recProduct.ProductName = item.ProductName;
-                    recProduct.Amount = item.Amount;
-                    recProduct.UserName = dropDownBoxUserNames.Text;
-                    recProduct.IsPreOrdered = true;
+                    var recProductOrder = new CclRecProductOrder();
 
-                    //var recOffice = new CclRecOffice();
-                    //recOffice.ProductName = item.ProductName;
-                    //recOffice.Amount = item.Amount;
-                    //recOffice.UserName = dropDownBoxUserNames.Text;
-                    //recOffice.IsPreOrdered = true;
+                    recProductOrder.ProductName = ucAddingProduct.productName;
+                    recProductOrder.ProductID = item.RecProductData.ProductID;
+                    recProductOrder.OrderID = item.RecProductOrder.OrderID;
+                    recProductOrder.Amount = item.RecProductOrder.Amount;
+                    recProductOrder.UserName = dropDownBoxUserNames.Text;
+                    recProductOrder.IsPreOrdered = true;
 
+                    SvcMain.Products.Add(recProductOrder);
+                    
 
-                    //svcDB.putDataToDB(recProduct, recOffice);
-                    SvcMain.Products.Add(recProduct);
                 }
 
                 shoppingCart.Items.Clear();
@@ -160,8 +137,8 @@ namespace Büromaterialbestellungen.GUI
                 int index = shoppingCart.IndexFromPoint(e.Location);
                 if (index != ListBox.NoMatches)
                 {
-                    var selectedProduct = (CclContProduct)shoppingCart.Items[index];
-                    selectedProduct.Amount++;
+                    var selectedProduct = (CclContProductOrder)shoppingCart.Items[index];
+                    selectedProduct.RecProductOrder.Amount++;
                     shoppingCart.Items[index] = shoppingCart.Items[index];
                     shoppingCart.Refresh();
                 }
@@ -172,10 +149,10 @@ namespace Büromaterialbestellungen.GUI
                 int index = shoppingCart.IndexFromPoint(e.Location);
                 if (index != ListBox.NoMatches)
                 {
-                    var selectedProduct = (CclContProduct)shoppingCart.Items[index];
-                    selectedProduct.Amount--;
+                    var selectedProduct = (CclContProductOrder)shoppingCart.Items[index];
+                    selectedProduct.RecProductOrder.Amount--;
                     shoppingCart.Items[index] = shoppingCart.Items[index];
-                    if( selectedProduct.Amount <= 0)
+                    if( selectedProduct.RecProductOrder.Amount <= 0)
                     {
                         shoppingCart.Items.Remove(shoppingCart.Items[index]);
                     }

@@ -14,29 +14,57 @@ namespace Büromaterialbestellungen.Classes.Services
     public class CclSvcMain
     {
         private CclSvcDataStorage _svcDB = new CclSvcDataStorage();
-        public ObservableCollection<CclRecProduct> Products { get; set; }
+        public ObservableCollection<CclRecProductOrder> Products { get; set; }
+
+        public ObservableCollection<CclRecProductData> ProductData { get;set; }
+
+        //public List<CclContProductOrder> AllProducts { get; set; } 
+
 
         public CclSvcMain()
         {
             //Holt die Daten aus der DB und speichert sie in der ObservableCollection
-            Products = new ObservableCollection<CclRecProduct>(_svcDB.getDataFromDB());
+            Products = new ObservableCollection<CclRecProductOrder>(_svcDB.getProductsFromDB());
+            ProductData = new ObservableCollection<CclRecProductData>(_svcDB.getProducstDataFromDB());
+
+            //AllProducts = new List<CclContProductOrder>();
 
             // Bei Änderung wird SaveProduct aufgerufen
             Products.CollectionChanged += (s, e) => SaveProduct();
 
         }
-       
+
+        public int GetProductIDByName(string productName)
+        {
+            var product = ProductData.FirstOrDefault(p => p.ProductName == productName);
+            if (product != null)
+            {
+                return product.ProductID;
+            }
+            return 0; 
+        }
+
+        public int GetKategorieIDByName(string productName)
+        {
+            var product = ProductData.FirstOrDefault(p => p.ProductName == productName);
+            if (product != null)
+            {
+                return product.KategorieID;
+            }
+            return 0;
+        }
+
         public void SaveProduct()
         {
             _svcDB.putDataToDB(Products.ToList());
         }
 
-        public void OnDeleted(CclRecProduct product)
+        public void OnDeleted(CclRecProductOrder product)
         {
             product.Deleted = true;
             _svcDB.putDataToDB(Products.ToList());
         }
-        public void OnReceived(CclRecProduct product)
+        public void OnReceived(CclRecProductOrder product)
         {
             product.Deleted = false;
             product.IsReceived = true;
@@ -45,16 +73,19 @@ namespace Büromaterialbestellungen.Classes.Services
             _svcDB.putDataToDB(Products.ToList());
         }
 
-        public CclContProduct CreateNewProduktForShoppingCart()//string _strName, int _iAmount, string _strUserName)
+        public CclContProductOrder CreateNewProduktForShoppingCart()
         {
-            CclContProduct clNew = new CclContProduct(); //{ ProductName = _strName, Amount = _iAmount, UserName = _strUserName };
+            CclContProductOrder clNew = new CclContProductOrder();
 
-            //Products.Add(clNew);  // CclSvcMain sollte die Liste der Produkte enthalten
-
-            return clNew;  // Du kannst auch eine void-Methode nehmen. Dann fällt diese Rückgabe weg. Kommt darauf an, ob du das neue Produkt auf der aufrufenden Seite noch verwendest.
+            return clNew;  
         }
 
-        
+        //Fügt das Produkt dem Warenkorb hinzu
+        //public void AddProductToShoppingCart(CclContProductOrder product)
+        //{
+        //    AllProducts.Add(product);
+        //}
+
 
 
     }

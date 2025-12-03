@@ -115,10 +115,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Container\CclContProduct.cs" />
-    <Compile Include="Classes\Container\CclContShoppingCart.cs" />
-    <Compile Include="Classes\Container\CclContUser.cs" />
-    <Compile Include="Classes\Records\CclRecProduct.cs" />
+    <Compile Include="Classes\Container\CclContOrder.cs" />
+    <Compile Include="Classes\Container\CclContProductData.cs" />
+    <Compile Include="Classes\Container\CclContProductOrder.cs" />
+    <Compile Include="Classes\Records\CclRecProductData.cs" />
+    <Compile Include="Classes\Records\CclRecProductOrder.cs" />
     <Compile Include="Classes\Records\CclRecTest.cs" />
     <Compile Include="Classes\Services\CclSvcDataStorage.cs" />
     <Compile Include="Classes\Services\CclSvcMain.cs" />
