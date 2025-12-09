@@ -27,13 +27,10 @@ namespace Büromaterialbestellungen.Classes.Services
             Products = new ObservableCollection<CclRecProductOrder>(_svcDB.getProductsFromDB());
             ProductData = new ObservableCollection<CclRecProductData>(_svcDB.getProducstDataFromDB());
 
-            //AllProducts = new List<CclContProductOrder>();
-
-            // Bei Änderung wird SaveProduct aufgerufen
             Products.CollectionChanged += (s, e) => SaveProduct();
 
         }
-
+        
         public int GetProductIDByName(string productName)
         {
             var product = ProductData.FirstOrDefault(p => p.ProductName == productName);
@@ -56,13 +53,13 @@ namespace Büromaterialbestellungen.Classes.Services
 
         public void SaveProduct()
         {
-            _svcDB.putDataToDB(Products.ToList());
+            _svcDB.putPruductToDB(Products.ToList());
         }
 
         public void OnDeleted(CclRecProductOrder product)
         {
             product.Deleted = true;
-            _svcDB.putDataToDB(Products.ToList());
+            _svcDB.putPruductToDB(Products.ToList());
         }
         public void OnReceived(CclRecProductOrder product)
         {
@@ -70,7 +67,7 @@ namespace Büromaterialbestellungen.Classes.Services
             product.IsReceived = true;
             product.IsOrdered = false;
             product.IsPreOrdered = false;
-            _svcDB.putDataToDB(Products.ToList());
+            _svcDB.putPruductToDB(Products.ToList());
         }
 
         public CclContProductOrder CreateNewProduktForShoppingCart()

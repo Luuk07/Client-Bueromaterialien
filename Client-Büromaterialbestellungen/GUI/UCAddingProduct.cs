@@ -94,6 +94,7 @@ namespace Büromaterialbestellungen.GUI
                     {
                         //shoppingCart.Items.Remove(existingItem);
                         existingItem.RecProductOrder.Amount += Product.RecProductOrder.Amount; // Jetzt wird die Menge addiert
+                        existingItem.RecProductOrder.Note = textBoxInputNote.Text; // Anmerkungen aktualisieren
                         //UI aktualisieren
                         int index = formProduktbestellung.shoppingCart.Items.IndexOf(existingItem);
                         formProduktbestellung.shoppingCart.Items[index] = existingItem;
@@ -107,8 +108,7 @@ namespace Büromaterialbestellungen.GUI
             
         }
 
-
-
+      
 
     }
 }

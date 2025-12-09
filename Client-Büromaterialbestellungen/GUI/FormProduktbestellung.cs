@@ -25,7 +25,7 @@ namespace Büromaterialbestellungen.GUI
         {
             InitializeComponent();
             SvcMain = svcMain;
-            OpenTree();
+            InitTree();
            
             ucAddingProduct.Location = new Point(230, 44);
             ucAddingProduct.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
@@ -40,7 +40,7 @@ namespace Büromaterialbestellungen.GUI
             this.MaximumSize = this.Size;
         }
         
-        void OpenTree()
+        void InitTree()
         {
             productTree.Nodes.Clear();
 

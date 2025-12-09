@@ -35,7 +35,7 @@ namespace Büromaterialbestellungen.Classes.Services
             return clProductDataList;
         }
 
-        public void putDataToDB(List<CclRecProductOrder> _liRecProducts)
+        public void putPruductToDB(List<CclRecProductOrder> _liRecProducts)
         {
             try
             {

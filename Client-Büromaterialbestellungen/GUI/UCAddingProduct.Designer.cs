@@ -33,6 +33,8 @@
             this.labelProductCount = new System.Windows.Forms.Label();
             this.buttonDeleteOne = new System.Windows.Forms.Button();
             this.buttonAddOne = new System.Windows.Forms.Button();
+            this.textBoxInputNote = new System.Windows.Forms.TextBox();
+            this.labelAnmerkungen = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelProductName
@@ -83,17 +85,35 @@
             this.buttonAddOne.UseVisualStyleBackColor = true;
             this.buttonAddOne.Click += new System.EventHandler(this.buttonAddOne_Click);
             // 
+            // textBoxInputNote
+            // 
+            this.textBoxInputNote.Location = new System.Drawing.Point(30, 322);
+            this.textBoxInputNote.Name = "textBoxInputNote";
+            this.textBoxInputNote.Size = new System.Drawing.Size(244, 31);
+            this.textBoxInputNote.TabIndex = 5;
+            // 
+            // labelAnmerkungen
+            // 
+            this.labelAnmerkungen.AutoSize = true;
+            this.labelAnmerkungen.Location = new System.Drawing.Point(25, 269);
+            this.labelAnmerkungen.Name = "labelAnmerkungen";
+            this.labelAnmerkungen.Size = new System.Drawing.Size(151, 25);
+            this.labelAnmerkungen.TabIndex = 6;
+            this.labelAnmerkungen.Text = "Anmerkungen:";
+            // 
             // UCAddingProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelAnmerkungen);
+            this.Controls.Add(this.textBoxInputNote);
             this.Controls.Add(this.buttonAddOne);
             this.Controls.Add(this.buttonDeleteOne);
             this.Controls.Add(this.labelProductCount);
             this.Controls.Add(this.buttonAddToShopingCart);
             this.Controls.Add(this.labelProductName);
             this.Name = "UCAddingProduct";
-            this.Size = new System.Drawing.Size(340, 350);
+            this.Size = new System.Drawing.Size(349, 466);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -106,5 +126,7 @@
         private System.Windows.Forms.Label labelProductCount;
         private System.Windows.Forms.Button buttonDeleteOne;
         private System.Windows.Forms.Button buttonAddOne;
+        private System.Windows.Forms.TextBox textBoxInputNote;
+        private System.Windows.Forms.Label labelAnmerkungen;
     }
 }

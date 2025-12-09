@@ -26,6 +26,7 @@ namespace Büromaterialbestellungen.Classes.Records
         ///**************************************************
         /// Instance variables
         private int I_intAmount;
+        private string I_strNote;
         private int I_intProductID;
         private string I_intProductName;
         private string I_strUserName;
@@ -47,6 +48,8 @@ namespace Büromaterialbestellungen.Classes.Records
         public string ProductName { get { return I_intProductName; } set { SetValue(ref I_intProductName, value); } }
         public int Amount { get { return I_intAmount; } set { SetValue(ref I_intAmount, value); } }
 
+        public string Note { get { return I_strNote; } set { SetValue(ref I_strNote, value); } }
+
         public string UserName { get { return I_strUserName; } set { SetValue(ref I_strUserName, value); } }
 
         public bool IsPreOrdered { get { return I_boolIsPreOrdered; } set { SetValue(ref I_boolIsPreOrdered, value); } }
@@ -54,6 +57,7 @@ namespace Büromaterialbestellungen.Classes.Records
         public bool IsOrdered { get { return I_boolIsOrdered; } set { SetValue(ref I_boolIsOrdered, value); } }
 
         public bool IsReceived { get { return I_boolIsReceived; } set { SetValue(ref I_boolIsReceived, value); } }
+
 
       
 
@@ -66,7 +70,7 @@ namespace Büromaterialbestellungen.Classes.Records
         /// <summary>
         /// Standard constructor. Initializes the instance.
         /// </summary>
-        public CclRecProductOrder() : this(int.MinValue, int.MinValue, string.Empty, int.MinValue, string.Empty, true, false, false) { }
+        public CclRecProductOrder() : this(int.MinValue, int.MinValue, string.Empty, int.MinValue, string.Empty, string.Empty, true, false, false) { }
 
         ///**************************************************
         /// <summary>
@@ -76,13 +80,14 @@ namespace Büromaterialbestellungen.Classes.Records
         /// <param name="_strDomain">Value for 'ErrorPath'.</param>
         /// <param name="_strPassword">Value for 'ErrorMailSender'.</param>
         /// <param name="_iTimeOut">Value for 'ErrorMailReceiver'.</param>
-        public CclRecProductOrder(int _intOrderID,int _intProductID, string _strProductName, int _intAmount, string _strUserName, bool _boolIsPreOrdered, bool _boolIsOrdered, bool _boolIsReceived)
+        public CclRecProductOrder(int _intOrderID,int _intProductID, string _strProductName, int _intAmount, string _strNote, string _strUserName, bool _boolIsPreOrdered, bool _boolIsOrdered, bool _boolIsReceived)
         {
             OrderID = _intOrderID;
             ProductID = _intProductID;
             ProductName = _strProductName;
             Amount = _intAmount;
-            //Password = _strPassword;
+            Note = _strNote;
+            
             UserName = _strUserName;
             IsPreOrdered = _boolIsPreOrdered;
             IsOrdered = _boolIsOrdered;
