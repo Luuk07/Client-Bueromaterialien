@@ -69,9 +69,11 @@ namespace Büromaterialbestellungen.GUI
             Product.RecProductData.ProductName = productName;
             Product.RecProductData.ProductID = svcMain.GetProductIDByName(productName);
             Product.RecProductData.KategorieID = svcMain.GetKategorieIDByName(productName);
+            Product.RecProductOrder.Note = textBoxInputNote.Text;
             added?.Invoke(this, EventArgs.Empty);
             labelCount = 1;
             labelProductCount.Text = labelCount.ToString();
+            textBoxInputNote.Text = "";
             //svcMain.AddProductToShoppingCart(Product);
         }
 
@@ -102,6 +104,7 @@ namespace Büromaterialbestellungen.GUI
                     else
                     {
                         formProduktbestellung.shoppingCart.Items.Add(Product);
+                        
                     }
                     Product = svcMain.CreateNewProduktForShoppingCart();
                 };

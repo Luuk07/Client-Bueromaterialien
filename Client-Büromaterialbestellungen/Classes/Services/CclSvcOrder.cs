@@ -49,5 +49,12 @@ namespace Büromaterialbestellungen.Classes.Services
 
             I_liProducts.Add(product);
         }
+
+        public void RemoveProduct(CclContProductOrder _clProduct)
+        {
+            I_liProducts.Remove(_clProduct);
+        }
+
+
     }
 }

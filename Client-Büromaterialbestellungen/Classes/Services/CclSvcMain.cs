@@ -53,10 +53,7 @@ namespace Büromaterialbestellungen.Classes.Services
             Order.Add(order.Order);
         }
 
-        public void SwitchOrderDataToRecData()
-        {
-
-        }
+        
 
         public int GetProductIDByName(string productName)
         {
