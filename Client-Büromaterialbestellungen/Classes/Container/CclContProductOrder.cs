@@ -1,4 +1,5 @@
 ﻿using Büromaterialbestellungen.Classes.Records;
+using Büromaterialbestellungen.Classes.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,23 +8,22 @@ using System.Threading.Tasks;
 
 namespace Büromaterialbestellungen.Classes.Container
 {
-    // Container class for products in the shopping cart
+   
     public class CclContProductOrder
-    {
-        //public string ProductName { get; set; }
-
-        // public int Amount { get; set; }
-
-        //public DateTime AddDate { get; set; }
+    {  
 
         public CclRecProductOrder RecProductOrder { get; set; }
 
         public CclRecProductData RecProductData { get; set; }
 
-        public CclContProductOrder() 
+        public CclSvcOrder Order { get; set; }
+
+
+        public CclContProductOrder()
         {
             RecProductOrder = new CclRecProductOrder();
             RecProductData = new CclRecProductData();
+            Order = new CclSvcOrder();
         }
 
         public override string ToString()

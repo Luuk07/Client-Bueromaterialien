@@ -15,12 +15,14 @@ namespace Büromaterialbestellungen.Classes.Services
     {
         private CclCDSDatabase clCDSDatabase;
         private CclCDSTable<CclRecProductOrder> clProductList;
-        CclCDSTable<CclRecProductData> clProductDataList;
+        private CclCDSTable<CclRecProductData> clProductDataList;
+        private CclCDSTable<CclRecOrder> clProductOrderList;
         public CclSvcDataStorage()
         {
             clCDSDatabase = new CclCDSDatabase(CDSStorageType.MariaDB);
             clProductList = new CclCDSTable<CclRecProductOrder>(clCDSDatabase.BaseDB.CreateDataAccess());
             clProductDataList = new CclCDSTable<CclRecProductData>(clCDSDatabase.BaseDB.CreateDataAccess());
+            clProductOrderList = new CclCDSTable<CclRecOrder>(clCDSDatabase.BaseDB.CreateDataAccess());
         }
         public CclCDSTable<CclRecProductOrder> getProductsFromDB()
         {
@@ -33,6 +35,12 @@ namespace Büromaterialbestellungen.Classes.Services
         {
             clProductDataList.LoadData();
             return clProductDataList;
+        }
+
+        public CclCDSTable<CclRecOrder> getOrderFromDB()
+        { 
+            clProductOrderList.LoadData();
+            return clProductOrderList;
         }
 
         public void putPruductToDB(List<CclRecProductOrder> _liRecProducts)
@@ -50,7 +58,24 @@ namespace Büromaterialbestellungen.Classes.Services
             }
         }
 
-      
+        public void putOrderToDB(List<CclRecOrder> _liRecOrder)
+        {
+            try
+            {
+                clProductOrderList.Clear();
+                clProductOrderList.AddRange(_liRecOrder);
+                clProductOrderList.SaveData();
+            }
+
+            catch (Exception excError)
+            {
+                MessageBox.Show(excError.Message);
+            }
+        }
+
+
+
+
 
 
     }

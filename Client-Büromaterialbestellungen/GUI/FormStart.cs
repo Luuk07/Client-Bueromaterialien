@@ -28,6 +28,8 @@ namespace Büromaterialbestellungen
         private void buttonDashboard_Click(object sender, EventArgs e)
         {
             var dashboard = new FormDashboard(SvcMain);
+
+            
             
 
             //Wenn Owner geschlossen wird, wird auch alles darunter geschlossen
@@ -47,6 +49,7 @@ namespace Büromaterialbestellungen
         {
             var produktbestellung = new FormProduktbestellung(SvcMain);
 
+            produktbestellung.InitTree();
             // Wie oben 
             produktbestellung.Owner = this;
 

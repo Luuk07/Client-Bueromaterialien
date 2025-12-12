@@ -20,13 +20,15 @@ namespace Büromaterialbestellungen.GUI
     public partial class FormProduktbestellung : Form
     {
         CclSvcMain SvcMain;
+        
 
         public FormProduktbestellung(CclSvcMain svcMain)
         {
             InitializeComponent();
             SvcMain = svcMain;
-            InitTree();
-           
+            
+
+
             ucAddingProduct.Location = new Point(230, 44);
             ucAddingProduct.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
             ucAddingProduct.AddToShoppingcart(this);
@@ -40,7 +42,7 @@ namespace Büromaterialbestellungen.GUI
             this.MaximumSize = this.Size;
         }
         
-        void InitTree()
+        public void InitTree()
         {
             productTree.Nodes.Clear();
 
@@ -59,6 +61,7 @@ namespace Büromaterialbestellungen.GUI
 
         public void AddChildren(TreeNode parenNode, int parentProductID )
         {
+            
             var childs = SvcMain.ProductData.Where(p => p.KategorieID == parentProductID);
             foreach (var child in childs)
             {
@@ -99,19 +102,23 @@ namespace Büromaterialbestellungen.GUI
                 foreach (CclContProductOrder item in shoppingCart.Items) { 
 
                     var recProductOrder = new CclRecProductOrder();
+                    var recProductData = new CclRecProductData();
 
+                    recProductOrder.ID = item.RecProductOrder.ID;
                     recProductOrder.ProductName = ucAddingProduct.productName;
                     recProductOrder.ProductID = item.RecProductData.ProductID;
-                    recProductOrder.OrderID = item.RecProductOrder.OrderID;
                     recProductOrder.Amount = item.RecProductOrder.Amount;
                     recProductOrder.UserName = dropDownBoxUserNames.Text;
                     recProductOrder.IsPreOrdered = true;
+                    recProductOrder.OrderID = SvcMain._svcOrder.ID;
 
-                    SvcMain.Products.Add(recProductOrder);
-                    
+                    SvcMain.Products.Add(recProductOrder);         
+                    SvcMain._svcOrder.AddProduct(recProductData ,recProductOrder);
+
 
                 }
 
+                SvcMain.AddOrderToAllOrderList(SvcMain._svcOrder);
                 shoppingCart.Items.Clear();
             }
 

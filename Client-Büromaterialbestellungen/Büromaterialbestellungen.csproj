@@ -110,20 +110,21 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UserAccount">
+      <HintPath>..\..\Libraries\Pool\UserAccount.dll</HintPath>
+    </Reference>
     <Reference Include="ZstdSharp, Version=0.8.6.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
       <HintPath>..\packages\ZstdSharp.Port.0.8.6\lib\net462\ZstdSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Container\CclContOrder.cs" />
-    <Compile Include="Classes\Container\CclContProductData.cs" />
     <Compile Include="Classes\Container\CclContProductOrder.cs" />
+    <Compile Include="Classes\Records\CclRecOrder.cs" />
     <Compile Include="Classes\Records\CclRecProductData.cs" />
     <Compile Include="Classes\Records\CclRecProductOrder.cs" />
-    <Compile Include="Classes\Records\CclRecTest.cs" />
     <Compile Include="Classes\Services\CclSvcDataStorage.cs" />
     <Compile Include="Classes\Services\CclSvcMain.cs" />
-    <Compile Include="Classes\Services\CclSvcTest.cs" />
+    <Compile Include="Classes\Services\CclSvcOrder.cs" />
     <Compile Include="GUI\FormDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +196,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

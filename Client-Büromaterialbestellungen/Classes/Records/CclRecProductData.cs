@@ -23,7 +23,6 @@ namespace Büromaterialbestellungen.Classes.Records
         /// Instance variables
         private int I_intProductID;
         private string I_strProductName;
-        private int I_intAmount;
         private string I_strDiscribtion;
         private string I_strReference;
         private bool I_boolIsConnectionPoint;
@@ -44,12 +43,6 @@ namespace Büromaterialbestellungen.Classes.Records
         public bool IsConnectionPoint { get { return I_boolIsConnectionPoint; } set { SetValue(ref I_boolIsConnectionPoint, value); } }
 
         public int KategorieID { get { return I_intKategorieID; } set { SetValue(ref I_intKategorieID, value); } }
-
-        //public DateTime OrderDate { get; set; }
-
-
-
-
 
         #endregion Properties
 

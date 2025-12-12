@@ -72,6 +72,15 @@ namespace Büromaterialbestellungen.GUI
 
             }
         }
+
+        private void listViewUC_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                
+                
+            }
+        }
     }
 }
 

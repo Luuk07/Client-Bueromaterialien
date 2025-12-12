@@ -115,7 +115,7 @@
             cclRecProductOrder1.IsPreOrdered = true;
             cclRecProductOrder1.IsReceived = false;
             cclRecProductOrder1.New = true;
-            cclRecProductOrder1.OrderID = -2147483648;
+            cclRecProductOrder1.OrderID = "";
             cclRecProductOrder1.ProductID = -2147483648;
             cclRecProductOrder1.ProductName = "";
             cclRecProductOrder1.UserName = "";

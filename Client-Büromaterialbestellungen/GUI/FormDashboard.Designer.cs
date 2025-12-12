@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-
-
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.labelVorbestellt = new System.Windows.Forms.Label();
@@ -61,7 +59,7 @@
             this.labelVorbestellt.AutoSize = true;
             this.labelVorbestellt.Location = new System.Drawing.Point(34, 85);
             this.labelVorbestellt.Name = "labelVorbestellt";
-            this.labelVorbestellt.Size = new System.Drawing.Size(228, 50);
+            this.labelVorbestellt.Size = new System.Drawing.Size(114, 25);
             this.labelVorbestellt.TabIndex = 10;
             this.labelVorbestellt.Text = "Vorbestellt";
             // 
@@ -70,7 +68,7 @@
             this.labelBestellt.AutoSize = true;
             this.labelBestellt.Location = new System.Drawing.Point(441, 85);
             this.labelBestellt.Name = "labelBestellt";
-            this.labelBestellt.Size = new System.Drawing.Size(166, 50);
+            this.labelBestellt.Size = new System.Drawing.Size(83, 25);
             this.labelBestellt.TabIndex = 11;
             this.labelBestellt.Text = "Bestellt";
             // 
@@ -108,12 +106,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1337, 806);
+            this.ClientSize = new System.Drawing.Size(1305, 806);
             this.Controls.Add(this.labelErhalten);
             this.Controls.Add(this.labelBestellt);
             this.Controls.Add(this.labelVorbestellt);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.ucOverviewErhalten);       
+            this.Controls.Add(this.ucOverviewErhalten);
             this.Controls.Add(this.ucOverviewVorbestellt);
             this.Controls.Add(this.ucOverviewBestellt);
             this.Controls.Add(this.label1);
