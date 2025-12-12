@@ -105,14 +105,14 @@ namespace Büromaterialbestellungen.GUI
                     var recProductData = new CclRecProductData();
 
                     recProductOrder.ID = item.RecProductOrder.ID;
-                    recProductOrder.ProductName = ucAddingProduct.productName;
+                    recProductOrder.ProductName = item.RecProductData.ProductName;
                     recProductOrder.ProductID = item.RecProductData.ProductID;
                     recProductOrder.Amount = item.RecProductOrder.Amount;
                     recProductOrder.UserName = dropDownBoxUserNames.Text;
                     recProductOrder.IsPreOrdered = true;
                     recProductOrder.OrderID = SvcMain._svcOrder.ID;
                     recProductOrder.Note = item.RecProductOrder.Note;
-
+                    
                     SvcMain._svcOrder.Date = DateTime.Now;
                     SvcMain.Products.Add(recProductOrder);         
                     SvcMain._svcOrder.AddProduct(recProductData ,recProductOrder);

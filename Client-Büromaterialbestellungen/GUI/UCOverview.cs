@@ -1,5 +1,6 @@
 ﻿using Büromaterialbestellungen.Classes.Container;
 using Büromaterialbestellungen.Classes.Records;
+using Büromaterialbestellungen.Classes.Services;
 using CDS.Classes;
 using CDS.Enumerations;
 using System;
@@ -8,10 +9,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Büromaterialbestellungen.Classes.Services;
 using System.Windows.Forms;
+
 
 
 
@@ -36,6 +38,7 @@ namespace Büromaterialbestellungen.GUI
             SvcMain = _ClSvcMain;
         }
 
+        // Löscht eintrag bei Doppelklick
         private void mouseDoubleClick(object sender, MouseEventArgs e)
         {
             
@@ -77,8 +80,28 @@ namespace Büromaterialbestellungen.GUI
         {
             if (e.Button == MouseButtons.Right)
             {
-                
-                
+
+                if (listViewUC.SelectedItems.Count > 0)
+                {
+                    ListViewItem selectedItem = listViewUC.SelectedItems[0];
+                    CclRecProductOrder tagProd = selectedItem.Tag as CclRecProductOrder;
+                    var sb = new System.Text.StringBuilder();
+                    if (tagProd != null)
+                    {
+                        var order = SvcMain.Order.FirstOrDefault(o => o.ID == tagProd.OrderID);
+                        foreach(var ord in SvcMain.Products)
+                        {
+                            
+                            if(ord.OrderID == tagProd.OrderID)
+                            {
+                              
+                                sb.AppendLine($"Produkt: {ord.ProductName}, Menge: {ord.Amount}");
+                            }
+                        }
+                        MessageBox.Show(sb.ToString());
+                    }
+                }
+
             }
         }
     }
