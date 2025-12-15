@@ -24,6 +24,8 @@ namespace Büromaterialbestellungen.Classes.Services
             clProductDataList = new CclCDSTable<CclRecProductData>(clCDSDatabase.BaseDB.CreateDataAccess());
             clProductOrderList = new CclCDSTable<CclRecOrder>(clCDSDatabase.BaseDB.CreateDataAccess());
         }
+
+        //Lädt die Produkte aus der Datenbank und gibt sie zurück
         public CclCDSTable<CclRecProductOrder> getProductsFromDB()
         {
             // Daten laden
@@ -31,18 +33,21 @@ namespace Büromaterialbestellungen.Classes.Services
             return clProductList;
         }
 
+        // Lädt die Produktdaten aus der Datenbank und gibt sie zurück
         public CclCDSTable<CclRecProductData> getProducstDataFromDB()
         {
             clProductDataList.LoadData();
             return clProductDataList;
         }
 
+        // Lädt die Bestellungen aus der Datenbank und gibt sie zurück
         public CclCDSTable<CclRecOrder> getOrderFromDB()
         { 
             clProductOrderList.LoadData();
             return clProductOrderList;
         }
 
+        // Speichert die Produkte in der Datenbank
         public void putPruductToDB(List<CclRecProductOrder> _liRecProducts)
         {
             try
@@ -58,6 +63,7 @@ namespace Büromaterialbestellungen.Classes.Services
             }
         }
 
+        // Speichert die Bestellungen in der Datenbank
         public void putOrderToDB(List<CclRecOrder> _liRecOrder)
         {
             try

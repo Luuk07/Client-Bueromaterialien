@@ -76,6 +76,7 @@ namespace Büromaterialbestellungen.GUI
             }
         }
 
+        // Zeigt bei rechtsklick die komplette Bestellung an
         private void listViewUC_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)

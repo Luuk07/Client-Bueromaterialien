@@ -72,6 +72,7 @@ namespace Büromaterialbestellungen.GUI
                 {
                     var lvi = new ListViewItem(item.ProductName);
                     lvi.SubItems.Add(item.Amount.ToString());
+                    //lvi.SubItems.Add(item.UserName);
                     lvi.SubItems.Add(item.UserName);
                     lvi.Tag = item;
                     ucOverviewErhalten.ListViewUC.Items.Add(lvi);
@@ -81,6 +82,7 @@ namespace Büromaterialbestellungen.GUI
                 {
                     var lvi = new ListViewItem(item.ProductName);
                     lvi.SubItems.Add(item.Amount.ToString());
+                    //lvi.SubItems.Add(item.UserName);
                     lvi.SubItems.Add(item.UserName);
                     lvi.Tag = item;
                     ucOverviewBestellt.ListViewUC.Items.Add(lvi);
@@ -90,6 +92,7 @@ namespace Büromaterialbestellungen.GUI
                 {
                     var lvi = new ListViewItem(item.ProductName);
                     lvi.SubItems.Add(item.Amount.ToString());
+                    //lvi.SubItems.Add(item.UserName);
                     lvi.SubItems.Add(item.UserName);
                     lvi.Tag = item;
                     ucOverviewVorbestellt.ListViewUC.Items.Add(lvi);

@@ -40,6 +40,7 @@ namespace Büromaterialbestellungen.Classes.Services
         //    Order.UserID = User.ID;
         //}
 
+        // Fügt ein Produkt zur Bestellung hinzu
         public void AddProduct(CclRecProductData _clRecData, CclRecProductOrder _clRecOrder)
         {
             var product = new CclContProductOrder();   
@@ -50,6 +51,7 @@ namespace Büromaterialbestellungen.Classes.Services
             I_liProducts.Add(product);
         }
 
+        // Entfernt ein Produkt aus der Bestellung
         public void RemoveProduct(CclContProductOrder _clProduct)
         {
             I_liProducts.Remove(_clProduct);

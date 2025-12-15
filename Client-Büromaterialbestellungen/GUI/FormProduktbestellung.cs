@@ -109,6 +109,7 @@ namespace Büromaterialbestellungen.GUI
                     recProductOrder.ProductID = item.RecProductData.ProductID;
                     recProductOrder.Amount = item.RecProductOrder.Amount;
                     recProductOrder.UserName = dropDownBoxUserNames.Text;
+                    recProductOrder.UserName = dropDownBoxUserNames.Text;
                     recProductOrder.IsPreOrdered = true;
                     recProductOrder.OrderID = SvcMain._svcOrder.ID;
                     recProductOrder.Note = item.RecProductOrder.Note;

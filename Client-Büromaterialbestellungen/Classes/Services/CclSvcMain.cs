@@ -47,14 +47,15 @@ namespace Büromaterialbestellungen.Classes.Services
 
         }
 
+        // Fügt eine Bestellung zur Liste aller Bestellungen hinzu
         public void AddOrderToAllOrderList(CclSvcOrder order)
         {
-            Orders.Add(order);
-            Order.Add(order.Order);
+           Orders.Add(order);
+           // Order.Add(order.Order);
         }
 
-        
 
+        // Gibt die ProduktID anhand des Produktnamens zurück
         public int GetProductIDByName(string productName)
         {
             var product = ProductData.FirstOrDefault(p => p.ProductName == productName);
@@ -65,6 +66,7 @@ namespace Büromaterialbestellungen.Classes.Services
             return 0; 
         }
 
+        // Gibt die KategorieID anhand des Produktnamens zurück
         public int GetKategorieIDByName(string productName)
         {
             var product = ProductData.FirstOrDefault(p => p.ProductName == productName);
@@ -75,22 +77,25 @@ namespace Büromaterialbestellungen.Classes.Services
             return 0;
         }
 
+        // Speichert die Produkte in der Datenbank
         public void SaveProduct()
         {
             _svcDB.putPruductToDB(Products.ToList());
         }
 
+        // Speichert die Bestellungen in der Datenbank
         public void SaveOrder()
         {
             _svcDB.putOrderToDB(Order.ToList());
         }
-
+        // Markiert ein Produkt als gelöscht
         public void OnDeleted(CclRecProductOrder product)
         {
             product.Deleted = true;
             _svcDB.putPruductToDB(Products.ToList());
             _svcDB.putOrderToDB(Order.ToList());
         }
+        // Markiert ein Produkt als erhalten
         public void OnReceived(CclRecProductOrder product)
         {
             product.Deleted = false;
@@ -100,7 +105,7 @@ namespace Büromaterialbestellungen.Classes.Services
             _svcDB.putPruductToDB(Products.ToList());
             _svcDB.putOrderToDB(Order.ToList());
         }
-
+        // Erstellt ein neues Produkt für den Warenkorb
         public CclContProductOrder CreateNewProduktForShoppingCart()
         {
             CclContProductOrder clNew = new CclContProductOrder();

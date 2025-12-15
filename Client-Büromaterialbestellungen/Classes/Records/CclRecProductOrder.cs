@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UserAccount.Classes.Container;
 
 namespace Büromaterialbestellungen.Classes.Records
 {
@@ -35,6 +36,7 @@ namespace Büromaterialbestellungen.Classes.Records
         private bool I_boolIsPreOrdered;
         private bool I_boolIsOrdered;
         private bool I_boolIsReceived;
+        //public CclContUserData I_clUser;
         //private bool I_boolIsDeleted;
 
         //private string I_strPassword;
@@ -56,6 +58,8 @@ namespace Büromaterialbestellungen.Classes.Records
         public string Note { get { return I_strNote; } set { SetValue(ref I_strNote, value); } }
 
         public string UserName { get { return I_strUserName; } set { SetValue(ref I_strUserName, value); } }
+       
+        //public CclContUserData User { get { return I_clUser; } set { SetValue(ref I_clUser, value); } } 
 
         public bool IsPreOrdered { get { return I_boolIsPreOrdered; } set { SetValue(ref I_boolIsPreOrdered, value); } }
 
@@ -82,6 +86,7 @@ namespace Büromaterialbestellungen.Classes.Records
         /// <param name="_iTimeOut">Value for 'ErrorMailReceiver'.</param>
         public CclRecProductOrder(int _intID, string _strOrderID,int _intProductID, string _strProductName, int _intAmount, string _strNote, string _strUserName, bool _boolIsPreOrdered, bool _boolIsOrdered, bool _boolIsReceived)
         {
+            //User = I_clUser;
             ID = _intID;    
             OrderID = _strOrderID;
             ProductID = _intProductID;
