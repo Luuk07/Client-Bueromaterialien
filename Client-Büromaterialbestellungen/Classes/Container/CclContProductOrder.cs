@@ -19,12 +19,18 @@ namespace Büromaterialbestellungen.Classes.Container
         public CclSvcOrder Order { get; set; }
 
 
-        public CclContProductOrder()
+        public CclContProductOrder(CclRecProductOrder recProductOrder, CclRecProductData recProductData, CclSvcOrder cclSvcOrder)
         {
-            RecProductOrder = new CclRecProductOrder();
-            RecProductData = new CclRecProductData();
-            Order = new CclSvcOrder();
+            RecProductOrder = recProductOrder;
+            RecProductData = recProductData;
+            Order = cclSvcOrder;
+
         }
+
+        public CclContProductOrder(): this( new CclRecProductOrder(), new CclRecProductData(), new CclSvcOrder())
+        {
+        }
+
 
         public override string ToString()
         {

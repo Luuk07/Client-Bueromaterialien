@@ -43,10 +43,7 @@ namespace Büromaterialbestellungen.Classes.Services
         // Fügt ein Produkt zur Bestellung hinzu
         public void AddProduct(CclRecProductData _clRecData, CclRecProductOrder _clRecOrder)
         {
-            var product = new CclContProductOrder();   
-            product.Order = this;
-            product.RecProductData = _clRecData;
-            product.RecProductOrder = _clRecOrder;
+            var product = new CclContProductOrder(_clRecOrder, _clRecData, this);   
 
             I_liProducts.Add(product);
         }
