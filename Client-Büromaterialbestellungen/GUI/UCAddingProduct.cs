@@ -77,6 +77,7 @@ namespace Büromaterialbestellungen.GUI
             //svcMain.AddProductToShoppingCart(Product);
         }
 
+
         public void AddToShoppingcart(FormProduktbestellung formProduktbestellung)
         {
                 added += (s, e) =>
@@ -92,8 +93,10 @@ namespace Büromaterialbestellungen.GUI
                         .FirstOrDefault(uc => uc != null &&
                          uc.ToString().Contains(Product.RecProductData.ProductName));
 
-                    if (existingItem != null)
+                    // Überprüfen, ob es das Item schon gibt und ob die Anmerkungen gleich sind 
+                    if (existingItem != null && (existingItem.RecProductOrder.Note == textBoxInputNote.Text))
                     {
+                        
                         //shoppingCart.Items.Remove(existingItem);
                         existingItem.RecProductOrder.Amount += Product.RecProductOrder.Amount; // Jetzt wird die Menge addiert
                         existingItem.RecProductOrder.Note = textBoxInputNote.Text; // Anmerkungen aktualisieren

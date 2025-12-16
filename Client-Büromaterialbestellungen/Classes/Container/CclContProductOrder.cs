@@ -28,7 +28,7 @@ namespace Büromaterialbestellungen.Classes.Container
 
         public override string ToString()
         {
-            return $"Produkt: {RecProductData.ProductName}, Menge: {RecProductOrder.Amount}, Anmerkung:{RecProductOrder.Note} ";
+            return $"Produkt: {RecProductData.ProductName}, Menge: {RecProductOrder.Amount}, Anmerkung:{RecProductOrder.Note} Artikelnumme: {RecProductOrder.ArticelNumber} ";
         }
     }
 }

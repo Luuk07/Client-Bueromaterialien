@@ -113,7 +113,8 @@ namespace Büromaterialbestellungen.GUI
                     recProductOrder.IsPreOrdered = true;
                     recProductOrder.OrderID = SvcMain._svcOrder.ID;
                     recProductOrder.Note = item.RecProductOrder.Note;
-                    
+                    recProductOrder.ArticelNumber = item.RecProductOrder.ArticelNumber;
+
                     SvcMain._svcOrder.Date = DateTime.Now;
                     SvcMain.Products.Add(recProductOrder);         
                     SvcMain._svcOrder.AddProduct(recProductData ,recProductOrder);
