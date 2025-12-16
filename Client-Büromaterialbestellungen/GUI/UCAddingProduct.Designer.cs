@@ -37,6 +37,8 @@
             this.labelAnmerkungen = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxInputArtikelnummer = new System.Windows.Forms.TextBox();
+            this.fristPicker = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelProductName
@@ -108,7 +110,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(25, 368);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(310, 50);
+            this.label1.Size = new System.Drawing.Size(155, 25);
             this.label1.TabIndex = 7;
             this.label1.Text = "Artikelnummer:";
             // 
@@ -119,10 +121,28 @@
             this.textBoxInputArtikelnummer.Size = new System.Drawing.Size(244, 31);
             this.textBoxInputArtikelnummer.TabIndex = 8;
             // 
+            // fristPicker
+            // 
+            this.fristPicker.Location = new System.Drawing.Point(0, 509);
+            this.fristPicker.Name = "fristPicker";
+            this.fristPicker.Size = new System.Drawing.Size(349, 31);
+            this.fristPicker.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(30, 481);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 25);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Frist:";
+            // 
             // UCAddingProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.fristPicker);
             this.Controls.Add(this.textBoxInputArtikelnummer);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelAnmerkungen);
@@ -133,7 +153,7 @@
             this.Controls.Add(this.buttonAddToShopingCart);
             this.Controls.Add(this.labelProductName);
             this.Name = "UCAddingProduct";
-            this.Size = new System.Drawing.Size(349, 488);
+            this.Size = new System.Drawing.Size(349, 995);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,5 +170,7 @@
         private System.Windows.Forms.Label labelAnmerkungen;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxInputArtikelnummer;
+        private System.Windows.Forms.DateTimePicker fristPicker;
+        private System.Windows.Forms.Label label2;
     }
 }

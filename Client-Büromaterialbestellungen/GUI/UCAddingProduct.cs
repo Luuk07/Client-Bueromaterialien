@@ -67,14 +67,34 @@ namespace Büromaterialbestellungen.GUI
         {
             Product.RecProductOrder.Amount = labelCount;
             Product.RecProductData.ProductName = productName;
+            Product.RecProductOrder.Deadline = fristPicker.Value;
             Product.RecProductData.ProductID = svcMain.GetProductIDByName(productName);
             Product.RecProductData.KategorieID = svcMain.GetKategorieIDByName(productName);
-            Product.RecProductOrder.Note = textBoxInputNote.Text;
+            if (string.IsNullOrWhiteSpace(textBoxInputArtikelnummer.Text))
+            {
+                Product.RecProductOrder.Note = "Keine Anmerkung";
+            }
+            else
+            {
+                Product.RecProductOrder.Note = textBoxInputNote.Text;
+            }
+            if (string.IsNullOrWhiteSpace(textBoxInputArtikelnummer.Text))
+            {
+                Product.RecProductOrder.ArticelNumber = "Keine Artikelnummer angegeben";
+            }
+            else
+            {
+                Product.RecProductOrder.ArticelNumber = textBoxInputArtikelnummer.Text;
+            }
+
+            
             added?.Invoke(this, EventArgs.Empty);
+            //UI zurücksetzen
             labelCount = 1;
             labelProductCount.Text = labelCount.ToString();
             textBoxInputNote.Text = "";
-            //svcMain.AddProductToShoppingCart(Product);
+            textBoxInputArtikelnummer.Text = "";
+           
         }
 
 
@@ -100,6 +120,7 @@ namespace Büromaterialbestellungen.GUI
                         //shoppingCart.Items.Remove(existingItem);
                         existingItem.RecProductOrder.Amount += Product.RecProductOrder.Amount; // Jetzt wird die Menge addiert
                         existingItem.RecProductOrder.Note = textBoxInputNote.Text; // Anmerkungen aktualisieren
+                        existingItem.RecProductOrder.ArticelNumber = textBoxInputArtikelnummer.Text; // Artikelnummer aktualisieren
                         //UI aktualisieren
                         int index = formProduktbestellung.shoppingCart.Items.IndexOf(existingItem);
                         formProduktbestellung.shoppingCart.Items[index] = existingItem;

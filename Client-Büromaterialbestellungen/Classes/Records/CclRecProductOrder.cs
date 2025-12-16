@@ -31,6 +31,7 @@ namespace Büromaterialbestellungen.Classes.Records
         private int I_intAmount;
         private string I_strNote;
         private string I_strArticelNumber;
+        private DateTime I_dtDeadline;
         private int I_intProductID;
         private string I_intProductName;
         private string I_strUserName;
@@ -63,7 +64,7 @@ namespace Büromaterialbestellungen.Classes.Records
         public string UserName { get { return I_strUserName; } set { SetValue(ref I_strUserName, value); } }
        
         //public CclContUserData User { get { return I_clUser; } set { SetValue(ref I_clUser, value); } } 
-
+        public DateTime Deadline { get { return I_dtDeadline; } set { SetValue(ref I_dtDeadline, value); } }
         public bool IsPreOrdered { get { return I_boolIsPreOrdered; } set { SetValue(ref I_boolIsPreOrdered, value); } }
 
         public bool IsOrdered { get { return I_boolIsOrdered; } set { SetValue(ref I_boolIsOrdered, value); } }
@@ -77,7 +78,7 @@ namespace Büromaterialbestellungen.Classes.Records
         /// <summary>
         /// Standard constructor. Initializes the instance.
         /// </summary>
-        public CclRecProductOrder() : this(int.MinValue, string.Empty , int.MinValue, string.Empty, int.MinValue, string.Empty, string.Empty, string.Empty, true, false, false) { }
+        public CclRecProductOrder() : this(int.MinValue, string.Empty , int.MinValue, string.Empty, int.MinValue, string.Empty, string.Empty, string.Empty, DateTime.Now, true, false, false) { }
 
         ///**************************************************
         /// <summary>
@@ -87,10 +88,11 @@ namespace Büromaterialbestellungen.Classes.Records
         /// <param name="_strDomain">Value for 'ErrorPath'.</param>
         /// <param name="_strPassword">Value for 'ErrorMailSender'.</param>
         /// <param name="_iTimeOut">Value for 'ErrorMailReceiver'.</param>
-        public CclRecProductOrder(int _intID, string _strOrderID,int _intProductID, string _strProductName, int _intAmount, string _strNote, string _strArticelNumber, string _strUserName,
+        public CclRecProductOrder(int _intID, string _strOrderID,int _intProductID, string _strProductName, int _intAmount, string _strNote, string _strArticelNumber, string _strUserName, DateTime _dtDeadline,
             bool _boolIsPreOrdered, bool _boolIsOrdered, bool _boolIsReceived)
         {
             //User = I_clUser;
+            Deadline = _dtDeadline;
             ArticelNumber = _strArticelNumber;
             ID = _intID;    
             OrderID = _strOrderID;

@@ -52,8 +52,11 @@ namespace Büromaterialbestellungen.GUI
 
            
             _clTarget.Columns.Add("Produktname");
-            _clTarget.Columns.Add("Menge");
             _clTarget.Columns.Add("Benutzername");
+            _clTarget.Columns.Add("Menge");
+            _clTarget.Columns.Add("Anmerkung");
+            _clTarget.Columns.Add("Artikelnummer");
+            _clTarget.Columns.Add("Frist");
         }
 
         //Get Data from Database and show it in the ListView
@@ -71,19 +74,26 @@ namespace Büromaterialbestellungen.GUI
                 if (item.IsReceived)
                 {
                     var lvi = new ListViewItem(item.ProductName);
-                    lvi.SubItems.Add(item.Amount.ToString());
-                    //lvi.SubItems.Add(item.UserName);
                     lvi.SubItems.Add(item.UserName);
+                    lvi.SubItems.Add(item.Amount.ToString());
+                    lvi.SubItems.Add(item.Note);
+                    lvi.SubItems.Add(item.ArticelNumber);
+                    lvi.SubItems.Add(item.Deadline.ToShortDateString());
+                    //lvi.SubItems.Add(item.UserName);
                     lvi.Tag = item;
+                    
                     ucOverviewErhalten.ListViewUC.Items.Add(lvi);
                     continue;
                 }
                 else if (item.IsOrdered)
                 {
                     var lvi = new ListViewItem(item.ProductName);
-                    lvi.SubItems.Add(item.Amount.ToString());
-                    //lvi.SubItems.Add(item.UserName);
                     lvi.SubItems.Add(item.UserName);
+                    lvi.SubItems.Add(item.Amount.ToString());
+                    lvi.SubItems.Add(item.Note);
+                    lvi.SubItems.Add(item.ArticelNumber);
+                    lvi.SubItems.Add(item.Deadline.ToShortDateString());
+                    //lvi.SubItems.Add(item.UserName);
                     lvi.Tag = item;
                     ucOverviewBestellt.ListViewUC.Items.Add(lvi);
                     continue;
@@ -91,9 +101,12 @@ namespace Büromaterialbestellungen.GUI
                 else if(item.IsPreOrdered)
                 {
                     var lvi = new ListViewItem(item.ProductName);
-                    lvi.SubItems.Add(item.Amount.ToString());
-                    //lvi.SubItems.Add(item.UserName);
                     lvi.SubItems.Add(item.UserName);
+                    lvi.SubItems.Add(item.Amount.ToString());
+                    lvi.SubItems.Add(item.Note);
+                    lvi.SubItems.Add(item.ArticelNumber);
+                    lvi.SubItems.Add(item.Deadline.ToShortDateString());
+                    //lvi.SubItems.Add(item.UserName);
                     lvi.Tag = item;
                     ucOverviewVorbestellt.ListViewUC.Items.Add(lvi);
                     continue;

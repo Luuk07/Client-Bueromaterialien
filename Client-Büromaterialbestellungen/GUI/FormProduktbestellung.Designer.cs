@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             Büromaterialbestellungen.Classes.Container.CclContProductOrder cclContProductOrder1 = new Büromaterialbestellungen.Classes.Container.CclContProductOrder();
+            Büromaterialbestellungen.Classes.Services.CclSvcOrder cclSvcOrder1 = new Büromaterialbestellungen.Classes.Services.CclSvcOrder();
             Büromaterialbestellungen.Classes.Records.CclRecProductData cclRecProductData1 = new Büromaterialbestellungen.Classes.Records.CclRecProductData();
             Büromaterialbestellungen.Classes.Records.CclRecProductOrder cclRecProductOrder1 = new Büromaterialbestellungen.Classes.Records.CclRecProductOrder();
             this.labelHeader = new System.Windows.Forms.Label();
@@ -63,7 +64,7 @@
             this.shoppingCart.ItemHeight = 25;
             this.shoppingCart.Location = new System.Drawing.Point(805, 122);
             this.shoppingCart.Name = "shoppingCart";
-            this.shoppingCart.Size = new System.Drawing.Size(666, 754);
+            this.shoppingCart.Size = new System.Drawing.Size(1357, 754);
             this.shoppingCart.TabIndex = 3;
             this.shoppingCart.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Produckt_MouseClick);
             // 
@@ -98,6 +99,7 @@
             // 
             this.ucAddingProduct.Location = new System.Drawing.Point(459, 122);
             this.ucAddingProduct.Name = "ucAddingProduct";
+            cclContProductOrder1.Order = cclSvcOrder1;
             cclRecProductData1.Changed = true;
             cclRecProductData1.Deleted = false;
             cclRecProductData1.Discribtion = "";
@@ -109,12 +111,15 @@
             cclRecProductData1.Reference = "";
             cclContProductOrder1.RecProductData = cclRecProductData1;
             cclRecProductOrder1.Amount = -2147483648;
+            cclRecProductOrder1.ArticelNumber = "";
             cclRecProductOrder1.Changed = true;
             cclRecProductOrder1.Deleted = false;
+            cclRecProductOrder1.ID = -2147483648;
             cclRecProductOrder1.IsOrdered = false;
             cclRecProductOrder1.IsPreOrdered = true;
             cclRecProductOrder1.IsReceived = false;
             cclRecProductOrder1.New = true;
+            cclRecProductOrder1.Note = "";
             cclRecProductOrder1.OrderID = "";
             cclRecProductOrder1.ProductID = -2147483648;
             cclRecProductOrder1.ProductName = "";
@@ -122,14 +127,14 @@
             cclContProductOrder1.RecProductOrder = cclRecProductOrder1;
             this.ucAddingProduct.Product = cclContProductOrder1;
             this.ucAddingProduct.productName = "Produktname";
-            this.ucAddingProduct.Size = new System.Drawing.Size(352, 389);
+            this.ucAddingProduct.Size = new System.Drawing.Size(340, 752);
             this.ucAddingProduct.TabIndex = 7;
             // 
             // FormProduktbestellung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1483, 946);
+            this.ClientSize = new System.Drawing.Size(2181, 946);
             this.Controls.Add(this.ucAddingProduct);
             this.Controls.Add(this.dropDownBoxUserNames);
             this.Controls.Add(this.buttonSend);
