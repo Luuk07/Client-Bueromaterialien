@@ -30,6 +30,8 @@ namespace Büromaterialbestellungen.Classes.Services
 
         internal DateTime Date { get { return Order.Date; } set { Order.Date = value; } }
 
+        internal int Amount { get { return Order.Amount; } set { Order.Amount = value; } }
+
         internal ReadOnlyCollection<CclContProductOrder> Products { get { return I_liProducts.AsReadOnly(); } }
 
         #endregion Properties#

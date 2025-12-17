@@ -39,6 +39,8 @@
             this.textBoxInputArtikelnummer = new System.Windows.Forms.TextBox();
             this.fristPicker = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
+            this.comboBoxUnit = new System.Windows.Forms.ComboBox();
+            this.checkBoxFrist = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // labelProductName
@@ -123,7 +125,7 @@
             // 
             // fristPicker
             // 
-            this.fristPicker.Location = new System.Drawing.Point(0, 509);
+            this.fristPicker.Location = new System.Drawing.Point(3, 547);
             this.fristPicker.Name = "fristPicker";
             this.fristPicker.Size = new System.Drawing.Size(349, 31);
             this.fristPicker.TabIndex = 9;
@@ -131,16 +133,37 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 481);
+            this.label2.Location = new System.Drawing.Point(3, 519);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 25);
             this.label2.TabIndex = 10;
             this.label2.Text = "Frist:";
             // 
+            // comboBoxUnit
+            // 
+            this.comboBoxUnit.FormattingEnabled = true;
+            this.comboBoxUnit.Location = new System.Drawing.Point(232, 203);
+            this.comboBoxUnit.Name = "comboBoxUnit";
+            this.comboBoxUnit.Size = new System.Drawing.Size(117, 33);
+            this.comboBoxUnit.TabIndex = 11;
+            // 
+            // checkBoxFrist
+            // 
+            this.checkBoxFrist.AutoSize = true;
+            this.checkBoxFrist.Location = new System.Drawing.Point(8, 467);
+            this.checkBoxFrist.Name = "checkBoxFrist";
+            this.checkBoxFrist.Size = new System.Drawing.Size(396, 58);
+            this.checkBoxFrist.TabIndex = 12;
+            this.checkBoxFrist.Text = "Frist hinzufügen";
+            this.checkBoxFrist.UseVisualStyleBackColor = true;
+            this.checkBoxFrist.CheckedChanged += new System.EventHandler(this.checkBoxFrist_CheckedChanged);
+            // 
             // UCAddingProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkBoxFrist);
+            this.Controls.Add(this.comboBoxUnit);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.fristPicker);
             this.Controls.Add(this.textBoxInputArtikelnummer);
@@ -172,5 +195,7 @@
         private System.Windows.Forms.TextBox textBoxInputArtikelnummer;
         private System.Windows.Forms.DateTimePicker fristPicker;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBoxUnit;
+        private System.Windows.Forms.CheckBox checkBoxFrist;
     }
 }

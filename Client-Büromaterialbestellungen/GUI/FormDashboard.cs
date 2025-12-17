@@ -93,6 +93,7 @@ namespace Büromaterialbestellungen.GUI
                     lvi.SubItems.Add(item.Note);
                     lvi.SubItems.Add(item.ArticelNumber);
                     lvi.SubItems.Add(item.Deadline.ToShortDateString());
+
                     //lvi.SubItems.Add(item.UserName);
                     lvi.Tag = item;
                     ucOverviewBestellt.ListViewUC.Items.Add(lvi);

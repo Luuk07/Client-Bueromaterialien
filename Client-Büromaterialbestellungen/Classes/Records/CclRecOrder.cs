@@ -18,6 +18,7 @@ namespace Büromaterialbestellungen.Classes.Records
 
         private DateTime I_dtDate;
 
+        private int I_ID;
         #endregion Instance variables
 
         #region Properties
@@ -25,6 +26,8 @@ namespace Büromaterialbestellungen.Classes.Records
         /// Properties
         [CDSField(40, 0, false, true)] public string UserID { get { return I_strUserID; } set { SetValue(ref I_strUserID, value); } }
                                        public DateTime Date { get { return I_dtDate; } set { SetValue(ref I_dtDate, value); } }
+
+                                       public int Amount { get { return I_ID; } set { SetValue(ref I_ID, value); } }
 
         #endregion Properties
     }

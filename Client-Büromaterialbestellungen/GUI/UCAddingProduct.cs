@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Büromaterialbestellungen.GUI
 {
@@ -18,7 +19,7 @@ namespace Büromaterialbestellungen.GUI
         public event EventHandler added;
         public CclSvcMain svcMain = new CclSvcMain();
 
-        //FormProduktbestellung formProduktbestellung = new FormProduktbestellung();
+      
 
         public string productName
         {
@@ -45,8 +46,22 @@ namespace Büromaterialbestellungen.GUI
             labelProductCount.Text = labelCount.ToString();
             labelCount = 1; 
             Product = svcMain.CreateNewProduktForShoppingCart(); //Besser, da es dann nur ein Product gibt, sonst gäbe es immer neue Instanzen
+
+            //ComboBox Unit mit Einheiten füllen
+            comboBoxUnit.Items.Add("Stück");
+            comboBoxUnit.Items.Add("Karton");
+            comboBoxUnit.Items.Add("Dose");
+            comboBoxUnit.Items.Add("Rolle");
+            comboBoxUnit.Items.Add("Packung");
+            comboBoxUnit.Items.Add("Glas");
+            comboBoxUnit.Items.Add("Sack");
+            comboBoxUnit.Items.Add("Palette");
+            //Fristpicker deaktivieren
+            fristPicker.Enabled = false;
+
+            comboBoxUnit.SelectedIndex = 0; //Standardwert
         }
-        
+
 
         private void buttonAddOne_Click(object sender, EventArgs e)
         {
@@ -66,10 +81,19 @@ namespace Büromaterialbestellungen.GUI
         private void buttonAddToShopingCart_Click(object sender, EventArgs e)
         {
             Product.RecProductOrder.Amount = labelCount;
+            Product.RecProductOrder.Unit = comboBoxUnit.SelectedItem.ToString();
             Product.RecProductData.ProductName = productName;
-            Product.RecProductOrder.Deadline = fristPicker.Value;
             Product.RecProductData.ProductID = svcMain.GetProductIDByName(productName);
             Product.RecProductData.KategorieID = svcMain.GetKategorieIDByName(productName);
+            if (checkBoxFrist.Checked)
+            {
+                Product.RecProductOrder.Deadline = fristPicker.Value;
+            }
+            else
+            {
+                Product.RecProductOrder.Deadline = DateTime.MinValue;
+            }
+
             if (string.IsNullOrWhiteSpace(textBoxInputArtikelnummer.Text))
             {
                 Product.RecProductOrder.Note = "Keine Anmerkung";
@@ -89,11 +113,8 @@ namespace Büromaterialbestellungen.GUI
 
             
             added?.Invoke(this, EventArgs.Empty);
-            //UI zurücksetzen
-            labelCount = 1;
-            labelProductCount.Text = labelCount.ToString();
-            textBoxInputNote.Text = "";
-            textBoxInputArtikelnummer.Text = "";
+        
+           
            
         }
 
@@ -107,6 +128,11 @@ namespace Büromaterialbestellungen.GUI
                         MessageBox.Show("Bitte gib ein Produkt an");
                         return;
                     }
+                    // UI zurücksetzen
+                    labelCount = 1;
+                    labelProductCount.Text = labelCount.ToString();
+                    textBoxInputNote.Text = "";
+                    textBoxInputArtikelnummer.Text = "";
 
                     var existingItem = formProduktbestellung.shoppingCart.Items
                         .Cast<CclContProductOrder>()
@@ -134,8 +160,19 @@ namespace Büromaterialbestellungen.GUI
                 };
             
         }
+        // Aktiviert oder Deaktiviert die Frist
+        private void checkBoxFrist_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxFrist.Checked)
+            {
+                fristPicker.Enabled = true;
+            }
+            else {
+                fristPicker.Enabled = false;
+                //Finde keine bessere Möglichkeit
+                Product.RecProductOrder.Deadline = DateTime.MinValue;
+            }
 
-      
-
+        }
     }
 }

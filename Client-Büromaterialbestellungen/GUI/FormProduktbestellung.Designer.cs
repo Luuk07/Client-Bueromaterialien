@@ -39,6 +39,7 @@
             this.buttonSend = new System.Windows.Forms.Button();
             this.dropDownBoxUserNames = new System.Windows.Forms.ComboBox();
             this.ucAddingProduct = new Büromaterialbestellungen.GUI.UCAddingProduct();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // labelHeader
@@ -113,6 +114,7 @@
             cclRecProductOrder1.Amount = -2147483648;
             cclRecProductOrder1.ArticelNumber = "";
             cclRecProductOrder1.Changed = true;
+            cclRecProductOrder1.Deadline = new System.DateTime(2025, 12, 17, 9, 10, 17, 696);
             cclRecProductOrder1.Deleted = false;
             cclRecProductOrder1.ID = -2147483648;
             cclRecProductOrder1.IsOrdered = false;
@@ -157,5 +159,6 @@
         private System.Windows.Forms.ComboBox dropDownBoxUserNames;
         private UCAddingProduct ucAddingProduct;
         public System.Windows.Forms.ListBox shoppingCart;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

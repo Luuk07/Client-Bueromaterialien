@@ -50,8 +50,8 @@ namespace Büromaterialbestellungen.Classes.Services
         // Fügt eine Bestellung zur Liste aller Bestellungen hinzu
         public void AddOrderToAllOrderList(CclSvcOrder order)
         {
-           Orders.Add(order);
-           // Order.Add(order.Order);
+           //Orders.Add(order);
+           Order.Add(order.Order);
         }
 
 

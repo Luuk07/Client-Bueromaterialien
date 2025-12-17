@@ -112,10 +112,12 @@ namespace Büromaterialbestellungen.GUI
                     
                     recProductOrder.IsPreOrdered = true;
                     recProductOrder.OrderID = SvcMain._svcOrder.ID;
-                    recProductOrder.Deadline = item.RecProductOrder.Deadline;
                     recProductOrder.Note = item.RecProductOrder.Note;
+                    recProductOrder.Unit = item.RecProductOrder.Unit;
                     recProductOrder.ArticelNumber = item.RecProductOrder.ArticelNumber;
+                    recProductOrder.Deadline = item.RecProductOrder.Deadline;
 
+                    SvcMain._svcOrder.Amount = shoppingCart.Items.Count;
                     SvcMain._svcOrder.Date = DateTime.Now;
                     SvcMain.Products.Add(recProductOrder);         
                     SvcMain._svcOrder.AddProduct(recProductData ,recProductOrder);

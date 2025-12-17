@@ -27,8 +27,9 @@ namespace Büromaterialbestellungen.Classes.Records
         ///**************************************************
         /// Instance variables
         /// 
-        private int I_intOrderID;
+       
         private int I_intAmount;
+        private string I_strUnit;
         private string I_strNote;
         private string I_strArticelNumber;
         private DateTime I_dtDeadline;
@@ -57,6 +58,8 @@ namespace Büromaterialbestellungen.Classes.Records
 
         public int Amount { get { return I_intAmount; } set { SetValue(ref I_intAmount, value); } }
 
+        public string Unit { get { return I_strUnit; } set { SetValue(ref I_strUnit, value); } }
+
         public string Note { get { return I_strNote; } set { SetValue(ref I_strNote, value); } }
 
         public string ArticelNumber { get { return I_strArticelNumber; } set { SetValue(ref I_strArticelNumber, value); } }
@@ -78,7 +81,7 @@ namespace Büromaterialbestellungen.Classes.Records
         /// <summary>
         /// Standard constructor. Initializes the instance.
         /// </summary>
-        public CclRecProductOrder() : this(int.MinValue, string.Empty , int.MinValue, string.Empty, int.MinValue, string.Empty, string.Empty, string.Empty, DateTime.Now, true, false, false) { }
+        public CclRecProductOrder() : this(int.MinValue, string.Empty , int.MinValue, string.Empty, int.MinValue,string.Empty, string.Empty, string.Empty, string.Empty, DateTime.Now, true, false, false) { }
 
         ///**************************************************
         /// <summary>
@@ -88,7 +91,7 @@ namespace Büromaterialbestellungen.Classes.Records
         /// <param name="_strDomain">Value for 'ErrorPath'.</param>
         /// <param name="_strPassword">Value for 'ErrorMailSender'.</param>
         /// <param name="_iTimeOut">Value for 'ErrorMailReceiver'.</param>
-        public CclRecProductOrder(int _intID, string _strOrderID,int _intProductID, string _strProductName, int _intAmount, string _strNote, string _strArticelNumber, string _strUserName, DateTime _dtDeadline,
+        public CclRecProductOrder(int _intID, string _strOrderID,int _intProductID, string _strProductName, int _intAmount, string _strUnit, string _strNote, string _strArticelNumber, string _strUserName, DateTime _dtDeadline,
             bool _boolIsPreOrdered, bool _boolIsOrdered, bool _boolIsReceived)
         {
             //User = I_clUser;
@@ -99,6 +102,7 @@ namespace Büromaterialbestellungen.Classes.Records
             ProductID = _intProductID;
             ProductName = _strProductName;
             Amount = _intAmount;
+            Unit = _strUnit;
             Note = _strNote;
             
             UserName = _strUserName;
